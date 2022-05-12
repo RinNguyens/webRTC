@@ -5,6 +5,7 @@
     video: true,
     facingMode: { exact: "environment" }
   };
+  console.log(constraints, 'constraints');
   var video = document.querySelector("video");
   // Fix for iOS Safari from https://leemartin.dev/hello-webrtc-on-safari-11-e8bcb5335295
   video.style.width = document.width + 'px';
@@ -19,11 +20,6 @@
     .then(function (mediaStream) {
         console.log(mediaStream, 'mediaStream');
       video.srcObject = mediaStream;
-      if (video.srcObject) {
-        videoIn.srcObject.getTracks().forEach((track) => {
-          track.stop();
-        });
-      }
       video.onloadedmetadata = function (e) {
         video.play();
       };
