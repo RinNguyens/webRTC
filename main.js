@@ -2,11 +2,8 @@
   "use strict";
   var constraints = {
     audio: false,
-    video: {
-      width: { min: 1024, ideal: 1280, max: 1920 },
-      height: { min: 576, ideal: 850, max: 1080 },
-      facingMode: "user",
-    },
+    video: true,
+    facingMode: { exact: "environment" }
   };
   var video = document.querySelector("video");
   // Fix for iOS Safari from https://leemartin.dev/hello-webrtc-on-safari-11-e8bcb5335295
