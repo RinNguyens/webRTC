@@ -17,6 +17,7 @@
   navigator.mediaDevices
     .getUserMedia(constraints)
     .then(function (mediaStream) {
+        console.log(mediaStream, 'mediaStream');
       video.srcObject = mediaStream;
       if (video.srcObject) {
         videoIn.srcObject.getTracks().forEach((track) => {

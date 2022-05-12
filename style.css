@@ -5,3 +5,9 @@ body {
   margin: 0px;
   padding: 0px;
 }
+
+#video:-webkit-full-screen {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+}
