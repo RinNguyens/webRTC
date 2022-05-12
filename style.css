@@ -6,7 +6,7 @@ body {
   padding: 0px;
 }
 
-#video:-webkit-full-screen {
+video {
     height: 100%;
     width: 100%;
     object-fit: cover;
