@@ -1,6 +1,6 @@
 (function () {
   "use strict";
-  var constraints = { audio: true, video:true, facingMode: { exact: 'environment'} };
+  var constraints = { audio: true, video: { facingMode: 'environment'} }
   var video = document.querySelector("video");
 
   navigator.mediaDevices
