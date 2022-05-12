@@ -1,58 +1,44 @@
-// The buttons to start & stop stream and to capture the image
-var btnStart = document.getElementById("btn-start");
-var btnStop = document.getElementById("btn-stop");
-var btnCapture = document.getElementById("btn-capture");
+(function() {
+    'use strict';
+    var video = document.querySelector('video')
+      , canvas;
 
-// The stream & capture
-var stream = document.getElementById("stream");
-var capture = document.getElementById("capture");
-var snapshot = document.getElementById("snapshot");
+    /**
+     *  generates a still frame image from the stream in the <video>
+     *  appends the image to the <body>
+     */
 
-// The video stream
-var cameraStream = null;
+    function takeSnapshot() {
+      var img = document.querySelector('img') || document.createElement('img');
+      var context;
+      var width = video.offsetWidth
+        , height = video.offsetHeight;
 
-// Attach listeners
-btnStart.addEventListener("click", startStreaming);
-btnStop.addEventListener("click", stopStreaming);
-btnCapture.addEventListener("click", captureSnapshot);
 
-navigator.mediaDevices
-  .getUserMedia({ video: true })
-  .then(function (mediaStream) {
-    cameraStream = mediaStream;
+      canvas = canvas || document.createElement('canvas');
+      canvas.width = width;
+      canvas.height = height;
 
-    stream.srcObject = mediaStream;
+      context = canvas.getContext('2d');
+      context.drawImage(video, 0, 0, width, height);
 
-    stream.play();
-  })
-  .catch(function (err) {
-    console.log("Unable to access camera: " + err);
-  });
+      img.src = canvas.toDataURL('image/png');
+      document.body.appendChild(img);
+    }
 
-// Stop Streaming
-function stopStreaming() {
-  if (null != cameraStream) {
-    var track = cameraStream.getTracks()[0];
-
-    track.stop();
-    stream.load();
-
-    cameraStream = null;
-  }
-}
-
-function captureSnapshot() {
-  if (null != cameraStream) {
-    var ctx = capture.getContext("2d");
-    var img = new Image();
-
-    ctx.drawImage(stream, 0, 0, capture.width, capture.height);
-
-    img.src = capture.toDataURL("image/png");
-    img.width = 240;
-
-    snapshot.innerHTML = "";
-
-    snapshot.appendChild(img);
-  }
-}
+    // use MediaDevices API
+    // docs: https://developer.mozilla.org/en-US/docs/Web/API/MediaDevices/getUserMedia
+    if (navigator.mediaDevices) {
+      // access the web cam
+      navigator.mediaDevices.getUserMedia({video: true})
+      // permission granted:
+        .then(function(stream) {
+          video.srcObject = stream;
+          video.addEventListener('click', takeSnapshot);
+        })
+        // permission denied:
+        .catch(function(error) {
+          document.body.textContent = 'Could not access the camera. Error: ' + error.name;
+        });
+    }
+  })();
