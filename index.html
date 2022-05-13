@@ -6,12 +6,12 @@
   <title>Demo</title>
   <link rel="stylesheet" href="style.css" type="text/css" media="all">
   <style>
-
     #content {
       width: 125%;
       height: 100%;
       position: relative;
     }
+
     #camera {
       position: absolute;
       z-index: 10;
@@ -32,38 +32,53 @@
     #result {
       z-index: 20;
       transform: skewX(10deg);
-      
+
     }
 
-    #takephoto-preview {
-      z-index: 20;
-      transform: skewX(10deg);
-    }
     #hand {
       z-index: 15;
       position: absolute;
       top: 41%;
     }
+
     .handImg {
       width: 100%;
       height: 100%;
       margin-left: -10%;
     }
+
     #hand {
-      -webkit-animation: cssAnimation 10s forwards; 
+      -webkit-animation: cssAnimation 10s forwards;
       animation: cssAnimation 10s forwards;
     }
+
     @keyframes cssAnimation {
-        0%   {opacity: 1;}
-        90%  {opacity: 1;}
-        100% {opacity: 0;}
-    }
-    @-webkit-keyframes cssAnimation {
-        0%   {opacity: 1;}
-        90%  {opacity: 1;}
-        100% {opacity: 0;}
+      0% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
     }
 
+    @-webkit-keyframes cssAnimation {
+      0% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        opacity: 0;
+      }
+    }
   </style>
 </head>
 
@@ -77,7 +92,7 @@
       <!-- フレーム -->
       <canvas id="frame" width="1200" height="900"></canvas>
       <div id="hand">
-        <img src="icon/hand.png"  class="handImg"/>
+        <img src="icon/hand.png" class="handImg" />
       </div>
 
       <!-- シャッター -->
@@ -100,48 +115,47 @@
 
     <!-- ダイアログ -->
     <!-- <div id="myModal"> -->
-      <!-- 最終結果 -->
-      <!-- <div id="dialog-result" class="dialog"> -->
-        <!-- <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48"> -->
-        <!-- <p><canvas id="result" width="620" height="480"></canvas></p>
+    <!-- 最終結果 -->
+    <!-- <div id="dialog-result" class="dialog"> -->
+    <!-- <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48"> -->
+    <!-- <p><canvas id="result" width="620" height="480"></canvas></p>
         <button id="dialog-result-dl" type="button">
           <img src="icon/download-solid.png" width="48" height="48">
         </button>
       </div> -->
 
-     
+
 
 
     <div id="myModal" class="modal">
 
       <!-- Modal content -->
       <div class="modal-content" id="dialog-result>
-        <div class="modal-header">
-          <span id="dialog-result-close" class="close">&times;</span>
-        </div>
-        <div class="modal-body">
-          <!-- <p><canvas id="result" width="620" height="480"></canvas></p> -->
-          <img id="takephoto-preview" alt="The screen capture will appear in this box." width="320" height="320" />
-        </div>
-        <div class="modal-footer">
-          <button id="dialog-result-dl" type="button">
-            <img src="icon/download-solid.png" width="48" height="48">
-          </button>
-        </div>
+        <div class=" modal-header">
+        <span id="dialog-result-close" class="close">&times;</span>
       </div>
-    
+      <div class="modal-body">
+        <p><canvas id="result" width="620" height="480"></canvas></p>
+      </div>
+      <div class="modal-footer">
+        <button id="dialog-result-dl" type="button">
+          <img src="icon/download-solid.png" width="48" height="48">
+        </button>
+      </div>
     </div>
-    <!-- /ダイアログ -->
 
-     <!--  NowLoading -->
-     <div id="dialog-nowloading" class="dialog">
-      ...Now Loading
-    </div>
+  </div>
+  <!-- /ダイアログ -->
+
+  <!--  NowLoading -->
+  <div id="dialog-nowloading" class="dialog">
+    ...Now Loading
+  </div>
   </div>
 
-    <audio id="se" preload="auto">
-      <source src="se/camera-shutter1.mp3" type="audio/mp3">
-    </audio>
+  <audio id="se" preload="auto">
+    <source src="se/camera-shutter1.mp3" type="audio/mp3">
+  </audio>
 
   </div>
 
@@ -156,7 +170,7 @@
     const SE = document.querySelector('#se');
     const width = document.querySelector('#contents').offsetWidth;
     const hight = document.querySelector('#contents').offsetHeight;
-    var photo = document.getElementById('takephoto-preview');
+
     /** フレーム素材一覧 */
     const FRAMES = [{
       large: "image/w.png",
@@ -165,30 +179,30 @@
 
 
     // Get the modal
-var modal = document.getElementById("myModal");
+    var modal = document.getElementById("myModal");
 
-// Get the button that opens the modal
-var btn = document.getElementById("btn-shutter");
+    // Get the button that opens the modal
+    var btn = document.getElementById("btn-shutter");
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+    // Get the <span> element that closes the modal
+    var span = document.getElementsByClassName("close")[0];
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
-}
+    // When the user clicks the button, open the modal 
+    btn.onclick = function () {
+      modal.style.display = "block";
+    }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
-  modal.style.display = "none";
-}
+    // When the user clicks on <span> (x), close the modal
+    span.onclick = function () {
+      modal.style.display = "none";
+    }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
-  }
-}
+    // When the user clicks anywhere outside of the modal, close it
+    window.onclick = function (event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
 
 
 
@@ -314,9 +328,6 @@ window.onclick = function(event) {
         const ctx = FRAME.getContext("2d");
         ctx.clearRect(0, 0, frame.width, frame.height);
         ctx.drawImage(image, 0, 0, frame.width, frame.height);
-        var data = FRAME.toDataURL('image/png');
-        console.log(data, 'data');
-			  photo.setAttribute('src', data);
 
         setTimeout(() => {
           dialogHide(modal);
@@ -375,7 +386,7 @@ window.onclick = function(event) {
 
   <iframe src="./saved_resource.html" style="display: none;"></iframe> -->
 
-  
+
 </body>
 
 </html>
