@@ -36,15 +36,16 @@
       z-index: 15;
       position: absolute;
       top: 41%;
+      height: 45%;
     }
     .handImg {
       width: 100%;
       height: 100%;
-      margin-left: -25%;
+      margin-left: -10%;
     }
-    #hand {
-      -webkit-animation: cssAnimation 5s forwards; 
-      animation: cssAnimation 5s forwards;
+    /* #hand {
+      -webkit-animation: cssAnimation 20s forwards; 
+      animation: cssAnimation 20s forwards;
     }
     @keyframes cssAnimation {
         0%   {opacity: 1;}
@@ -55,7 +56,7 @@
         0%   {opacity: 1;}
         90%  {opacity: 1;}
         100% {opacity: 0;}
-    }
+    } */
 
   </style>
 </head>
@@ -68,7 +69,7 @@
       <video id="camera" autoplay muted playsinline></video>
 
       <!-- フレーム -->
-      <canvas id="frame" width="1000" height="800"></canvas>
+      <canvas id="frame" width="1200" height="900"></canvas>
       <div id="hand">
         <img src="icon/hand.png"  class="handImg"/>
       </div>
