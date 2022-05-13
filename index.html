@@ -104,19 +104,15 @@
         </button>
       </div> -->
 
-      <!--  NowLoading -->
-      <div id="dialog-nowloading" class="dialog">
-        ...Now Loading
-      </div>
-    </div>
+     
 
 
     <div id="myModal" class="modal">
 
       <!-- Modal content -->
-      <div class="modal-content">
+      <div class="modal-content" id="dialog-result>
         <div class="modal-header">
-          <span class="close">&times;</span>
+          <span id="dialog-result-close" class="close">&times;</span>
         </div>
         <div class="modal-body">
           <p><canvas id="result" width="620" height="480"></canvas></p>
@@ -130,6 +126,12 @@
     
     </div>
     <!-- /ダイアログ -->
+
+     <!--  NowLoading -->
+     <div id="dialog-nowloading" class="dialog">
+      ...Now Loading
+    </div>
+  </div>
 
     <audio id="se" preload="auto">
       <source src="se/camera-shutter1.mp3" type="audio/mp3">

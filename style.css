@@ -40,6 +40,10 @@
 /* ダイアログ                            */
 /*---------------------------------------*/
 /* The Modal (background) */
+
+#myModal {
+  display: block;
+}
 .modal {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
