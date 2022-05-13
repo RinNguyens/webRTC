@@ -34,8 +34,6 @@
 <body>
   <div id="wrapper">
 
-    <h1>Demo</h1>
-
     <section id="contents">
       <!-- カメラ映像 -->
       <video id="camera" autoplay muted playsinline></video>
@@ -110,8 +108,8 @@
         width: 1920,
         height: 1080,
         aspectRatio: 1.7777777778,
-        facingMode: "user" // フロントカメラを利用する
-        // facingMode: { exact: "environment" }  // リアカメラを利用する場合
+        // facingMode: "user" // フロントカメラを利用する
+        facingMode: { exact: "environment" }  // リアカメラを利用する場合
       }
     };
 
