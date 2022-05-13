@@ -94,20 +94,40 @@
     <canvas id="still" width="860" height="480"></canvas>
 
     <!-- ダイアログ -->
-    <div id="dialog-outer">
+    <!-- <div id="myModal"> -->
       <!-- 最終結果 -->
-      <div id="dialog-result" class="dialog">
-        <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
-        <p><canvas id="result" width="620" height="480"></canvas></p>
+      <!-- <div id="dialog-result" class="dialog"> -->
+        <!-- <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48"> -->
+        <!-- <p><canvas id="result" width="620" height="480"></canvas></p>
         <button id="dialog-result-dl" type="button">
           <img src="icon/download-solid.png" width="48" height="48">
         </button>
-      </div>
+      </div> -->
 
       <!--  NowLoading -->
       <div id="dialog-nowloading" class="dialog">
         ...Now Loading
       </div>
+    </div>
+
+
+    <div id="myModal" class="modal">
+
+      <!-- Modal content -->
+      <div class="modal-content">
+        <div class="modal-header">
+          <span class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p><canvas id="result" width="620" height="480"></canvas></p>
+        </div>
+        <div class="modal-footer">
+          <button id="dialog-result-dl" type="button">
+            <img src="icon/download-solid.png" width="48" height="48">
+          </button>
+        </div>
+      </div>
+    
     </div>
     <!-- /ダイアログ -->
 
@@ -134,6 +154,33 @@
       large: "image/w.png",
       small: "image/w.png"
     }];
+
+
+    // Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("btn-shutter");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks the button, open the modal 
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
 
 
 
@@ -287,7 +334,7 @@
      * @param {string} id
      **/
     function dialogShow(id) {
-      document.querySelector("#dialog-outer").style.display = "block";
+      document.querySelector("#myModal").style.display = "block";
       document.querySelector(id).style.display = "block";
     }
 
@@ -297,23 +344,8 @@
      * @param {string} id
      **/
     function dialogHide(id) {
-      document.querySelector("#dialog-outer").style.display = "none";
+      document.querySelector("#myModal").style.display = "none";
       document.querySelector(id).style.display = "none";
-    }
-
-    function captureSnapshot() {
-
-        var ctx = capture.getContext( '2d' );
-        var img = new Image();
-
-        ctx.drawImage( VIDEO, 0, 0, capture.width, capture.height );
-
-        img.src		= capture.toDataURL( "image/png" );
-        img.width	= width;
-
-        snapshot.innerHTML = '';
-
-        snapshot.appendChild( img );
     }
 
   </script>
