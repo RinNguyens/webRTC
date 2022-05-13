@@ -6,8 +6,32 @@ body {
   padding: 0px;
 }
 
-video {
-    height: 100%;
-    width: 100%;
-    object-fit: cover;
+.webcamCapture {
+  position: relative;
+  width: 100%;
+  object-fit: cover;
+}
+.webcamCapture__button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  cursor: pointer;
+  color: white;
+}
+@media only screen and (max-device-width : 640px) {
+  .webcamCapture {
+      position:fixed;
+      height:100%;
+      width:100%;
+      object-fit: cover;
+ }
+}
+@media only screen and (max-device-width: 768px) {
+  .webcamCapture {
+      position:fixed;
+      height:100%;
+      width:100%;
+      object-fit: cover;
+ }
 }
