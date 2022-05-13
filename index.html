@@ -20,7 +20,7 @@
     #frame {
       position: absolute;
       z-index: 20;
-      left: 0;
+      left: -10%;
       top: 25%;
       transform: skewX(10deg);
     }
@@ -36,7 +36,6 @@
       z-index: 15;
       position: absolute;
       top: 41%;
-      height: 45%;
     }
     .handImg {
       width: 100%;
@@ -97,8 +96,7 @@
       <!-- 最終結果 -->
       <div id="dialog-result" class="dialog">
         <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
-        <p><canvas id="result" width="620" height="480"></canvas></p>
-        <div id="snapshot"></div>
+        <p><canvas id="result hand" width="620" height="480"></canvas></p>
         <button id="dialog-result-dl" type="button">
           <img src="icon/download-solid.png" width="48" height="48">
         </button>
