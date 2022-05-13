@@ -21,7 +21,7 @@
       position: absolute;
       z-index: 20;
       left: 0;
-      top: 0;
+      top: 25%;
       transform: skewX(10deg);
     }
 
@@ -42,6 +42,21 @@
       height: 100%;
       margin-left: -25%;
     }
+    #hand {
+      -webkit-animation: cssAnimation 5s forwards; 
+      animation: cssAnimation 5s forwards;
+    }
+    @keyframes cssAnimation {
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+    }
+    @-webkit-keyframes cssAnimation {
+        0%   {opacity: 1;}
+        90%  {opacity: 1;}
+        100% {opacity: 0;}
+    }
+
   </style>
 </head>
 
