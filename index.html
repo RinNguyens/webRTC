@@ -43,12 +43,12 @@
       <video id="camera" autoplay muted playsinline></video>
 
       <!-- フレーム -->
-      <canvas id="frame" width="480" height="320"></canvas>
+      <canvas id="frame" width="620" height="480"></canvas>
 
       <!-- シャッター -->
       <div id="shutter-inner">
         <button id="btn-shutter" type="button">
-          <img src="icon/camera-solid.png" width="100" height="100">
+          <img src="icon/camera-solid.png" width="150" height="150">
         </button>
       </div>
 
@@ -61,14 +61,14 @@
     </section>
 
     <!-- 合成用Canvas(不可視) -->
-    <canvas id="still" width="480" height="320"></canvas>
+    <canvas id="still" width="620" height="480"></canvas>
 
     <!-- ダイアログ -->
     <div id="dialog-outer">
       <!-- 最終結果 -->
       <div id="dialog-result" class="dialog">
         <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
-        <p><canvas id="result" width="480" height="320"></canvas></p>
+        <p><canvas id="result" width="620" height="480"></canvas></p>
         <button id="dialog-result-dl" type="button">
           <img src="icon/download-solid.png" width="48" height="48">
         </button>
