@@ -1,13 +1,10 @@
-/* #content {
-  position: relative;
-} */
-
 #wrapper {
   margin: 0 0;
   max-width: 100%;
 }
 
 #shutter-inner {
+  z-index: 20;
   position: absolute;
   bottom: 0;
   left: 50%;
