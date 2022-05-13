@@ -34,6 +34,11 @@
       transform: skewX(10deg);
       
     }
+
+    #takephoto-preview {
+      z-index: 20;
+      transform: skewX(10deg);
+    }
     #hand {
       z-index: 15;
       position: absolute;
@@ -115,7 +120,8 @@
           <span id="dialog-result-close" class="close">&times;</span>
         </div>
         <div class="modal-body">
-          <p><canvas id="result" width="620" height="480"></canvas></p>
+          <!-- <p><canvas id="result" width="620" height="480"></canvas></p> -->
+          <img id="takephoto-preview" alt="The screen capture will appear in this box." width="320" height="320" />
         </div>
         <div class="modal-footer">
           <button id="dialog-result-dl" type="button">
@@ -150,7 +156,7 @@
     const SE = document.querySelector('#se');
     const width = document.querySelector('#contents').offsetWidth;
     const hight = document.querySelector('#contents').offsetHeight;
-
+    var photo = document.getElementById('takephoto-preview');
     /** フレーム素材一覧 */
     const FRAMES = [{
       large: "image/w.png",
@@ -308,6 +314,9 @@ window.onclick = function(event) {
         const ctx = FRAME.getContext("2d");
         ctx.clearRect(0, 0, frame.width, frame.height);
         ctx.drawImage(image, 0, 0, frame.width, frame.height);
+        var data = FRAME.toDataURL('image/png');
+        console.log(data, 'data');
+			  photo.setAttribute('src', data);
 
         setTimeout(() => {
           dialogHide(modal);
