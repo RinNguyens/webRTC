@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/RinNguyens/webRTC.git/static/css/main.3839215a.css",
+    "main.js": "/RinNguyens/webRTC.git/static/js/main.91247ffb.js",
+    "static/js/787.06de976e.chunk.js": "/RinNguyens/webRTC.git/static/js/787.06de976e.chunk.js",
+    "index.html": "/RinNguyens/webRTC.git/index.html",
+    "main.3839215a.css.map": "/RinNguyens/webRTC.git/static/css/main.3839215a.css.map",
+    "main.91247ffb.js.map": "/RinNguyens/webRTC.git/static/js/main.91247ffb.js.map",
+    "787.06de976e.chunk.js.map": "/RinNguyens/webRTC.git/static/js/787.06de976e.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3839215a.css",
+    "static/js/main.91247ffb.js"
+  ]
+}
