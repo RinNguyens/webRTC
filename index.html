@@ -8,7 +8,7 @@
   <style>
 
     #content {
-      width: 100%;
+      width: 125%;
       height: 100%;
       position: relative;
     }
@@ -21,7 +21,7 @@
       position: absolute;
       z-index: 20;
       left: 0;
-      bottom: 15%;
+      top: 0;
       transform: skewX(10deg);
     }
 
@@ -82,6 +82,7 @@
       <div id="dialog-result" class="dialog">
         <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
         <p><canvas id="result" width="620" height="480"></canvas></p>
+        <div id="snapshot"></div>
         <button id="dialog-result-dl" type="button">
           <img src="icon/download-solid.png" width="48" height="48">
         </button>
@@ -283,6 +284,22 @@
       document.querySelector("#dialog-outer").style.display = "none";
       document.querySelector(id).style.display = "none";
     }
+
+    function captureSnapshot() {
+
+        var ctx = capture.getContext( '2d' );
+        var img = new Image();
+
+        ctx.drawImage( VIDEO, 0, 0, capture.width, capture.height );
+
+        img.src		= capture.toDataURL( "image/png" );
+        img.width	= width;
+
+        snapshot.innerHTML = '';
+
+        snapshot.appendChild( img );
+    }
+
   </script>
 
   <!-- Global site tag (gtag.js) - Google Analytics -->
@@ -298,6 +315,8 @@
   </script>
 
   <iframe src="./saved_resource.html" style="display: none;"></iframe> -->
+
+  
 </body>
 
 </html>
