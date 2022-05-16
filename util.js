@@ -11,6 +11,10 @@ async function concatCanvas(base, asset){
 
   for(let i=0; i<asset.length; i++){
     const image1 = await getImagefromCanvas(asset[i]);
+    if (asset[i] === '#frame') {
+      document.getElementById('frame').style.transform = 'skewX(10deg)';
+    }
+    console.log(asset[i], 'image1');
     ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
   }
 }
