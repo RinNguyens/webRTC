@@ -11,10 +11,6 @@ async function concatCanvas(base, asset){
 
   for(let i=0; i<asset.length; i++){
     const image1 = await getImagefromCanvas(asset[i]);
-    if (asset[i] === '#frame') {
-      document.getElementById('frame').style.transform = 'skewX(10deg)';
-    }
-    console.log(asset[i], 'image1');
     ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
   }
 }
@@ -29,7 +25,9 @@ function getImagefromCanvas(id){
   return new Promise((resolve, reject) => {
     const image = new Image();
     const ctx = document.querySelector(id).getContext("2d");
-    image.onload = () => resolve(image);
+    image.onload = () => {
+      resolve(image);
+    }
     image.onerror = (e) => reject(e);
     image.src = ctx.canvas.toDataURL();
   });

@@ -188,3 +188,9 @@
   color: white;
 }
 
+
+#frameCopy {
+  display: block;
+  transform: skewX(10deg);
+
+}

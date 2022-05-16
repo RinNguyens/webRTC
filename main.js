@@ -8,6 +8,7 @@ const SE = document.querySelector('#se');
 const width = document.querySelector('#contents').offsetWidth;
 const hight = document.querySelector('#contents').offsetHeight;
 
+const FRAMECOPY = document.querySelector("#frameCopy"); // <canvas>
 /** フレーム素材一覧 */
 const FRAMES = [{
   large: "image/w.png",
@@ -69,6 +70,7 @@ window.onload = () => {
   // フレーム初期化
   //-----------------------------
   drawFrame(FRAMES[0].large); // 初期フレームを表示
+
   setFrameList(); // 切り替え用のフレーム一覧を表示
 
   //-----------------------------
@@ -81,6 +83,8 @@ window.onload = () => {
 
     // 画像の生成
     onShutter(); // カメラ映像から静止画を取得
+    drawFrameCopy(FRAMES[0].large); // 初期フレームを表示
+
     concatCanvas("#result", ["#still", "#frame"]); // フレームと合成
 
     // 最終結果ダイアログを表示
@@ -163,6 +167,28 @@ function drawFrame(path) {
   image.src = path;
   image.onload = () => {
     const ctx = FRAME.getContext("2d");
+    ctx.clearRect(0, 0, frame.width, frame.height);
+    ctx.drawImage(image, 0, 0, frame.width, frame.height);
+
+    setTimeout(() => {
+      dialogHide(modal);
+    }, 100);
+  };
+  dialogShow(modal);
+}
+
+/**
+ * 指定フレームを描画する
+ *
+ * @param {string} path  フレームの画像URL
+ * @return {void}
+ */
+ function drawFrameCopy(path) {
+  const modal = "#dialog-nowloading";
+  const image = new Image();
+  image.src = path;
+  image.onload = () => {
+    const ctx = FRAMECOPY.getContext("2d");
     ctx.clearRect(0, 0, frame.width, frame.height);
     ctx.drawImage(image, 0, 0, frame.width, frame.height);
 
