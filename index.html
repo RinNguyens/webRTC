@@ -6,10 +6,6 @@
   <title>Demo</title>
   <link rel="stylesheet" href="style.css" type="text/css" media="all">
   <style>
-    canvas {
-      border: 1px solid gray;
-    }
-
     #camera {
       z-index: 1;
       position: fixed;
@@ -62,7 +58,7 @@
     <div id="dialog-outer">
       <!-- 最終結果 -->
       <div id="dialog-result" class="dialog">
-        <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
+        <img id="dialog-result-close" src="icon/times-circle-regular.svg" width="48" height="48">
         <p><canvas id="result" width="640" height="480"></canvas></p>
         <button id="dialog-result-dl" type="button">
           <img src="icon/download-solid.png" width="48" height="48">
@@ -104,8 +100,8 @@
       video: {
         width: 1920,
         height: 1080,
-        // facingMode: "user" // フロントカメラを利用する
-        facingMode: { exact: "environment" }  // リアカメラを利用する場合
+        facingMode: "user" // フロントカメラを利用する
+        // facingMode: { exact: "environment" }  // リアカメラを利用する場合
       }
     };
 
