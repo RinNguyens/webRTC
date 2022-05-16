@@ -25,9 +25,7 @@ function getImagefromCanvas(id){
   return new Promise((resolve, reject) => {
     const image = new Image();
     const ctx = document.querySelector(id).getContext("2d");
-    image.onload = () => {
-      resolve(image);
-    }
+    image.onload = () => resolve(image);
     image.onerror = (e) => reject(e);
     image.src = ctx.canvas.toDataURL();
   });
