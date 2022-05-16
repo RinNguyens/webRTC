@@ -12,7 +12,7 @@
 
 <body>
   <div id="wrapper">
-    <div id="contents">
+    <section id="contents">
       <!-- カメラ映像 -->
       <video id="camera" autoplay muted playsinline></video>
 
@@ -35,7 +35,7 @@
         <ul id="framelist">
         </ul>
       </div>
-    </div>
+    </section>
 
     <!-- 合成用Canvas(不可視) -->
     <canvas id="still" width="860" height="480"></canvas>
@@ -51,22 +51,23 @@
         </button>
       </div> -->
     <div id="myModal" class="modal">
+      <div class="wrapModal">
 
-      <!-- Modal content -->
-      <div class="modal-content" id="dialog-result>
+        <!-- Modal content -->
+        <div class="modal-content" id="dialog-result>
         <div class=" modal-header">
-        <span id="dialog-result-close" class="close">&times;</span>
-      </div>
-      <div class="modal-body">
-        <p>
-          <canvas id="frameCopy" width="1200" height="900"></canvas>
-          <canvas id="result" width="620" height="480"></canvas>
-        </p>
-      </div>
-      <div class="modal-footer">
-        <button id="dialog-result-dl" type="button">
-          <img src="icon/download-solid.png" width="48" height="48">
-        </button>
+          <span id="dialog-result-close" class="close">&times;</span>
+        </div>
+        <div class="modal-body">
+          <p style="width: 100%; height: 100%">
+            <canvas id="result"></canvas>
+          </p>
+        </div>
+        <div class="modal-footer">
+          <button id="dialog-result-dl" type="button">
+            <img src="icon/download-solid.png" width="48" height="48">
+          </button>
+        </div>
       </div>
     </div>
 
