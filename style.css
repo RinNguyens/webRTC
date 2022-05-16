@@ -18,6 +18,7 @@ body {
 }
 
 #shutter-inner {
+  z-index: 10;
   position: absolute;
   bottom: 2%;
   width: 100%;

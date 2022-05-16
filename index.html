@@ -21,7 +21,7 @@
 
     #frame {
       position: absolute;
-      z-index: 20;
+      z-index: 10;
       transform: skew(10deg);
       top: 45%;
       left: 15%;
@@ -104,8 +104,8 @@
       video: {
         width: 1920,
         height: 1080,
-        // facingMode: "user" // フロントカメラを利用する
-        facingMode: { exact: "environment" }  // リアカメラを利用する場合
+        facingMode: "user" // フロントカメラを利用する
+        // facingMode: { exact: "environment" }  // リアカメラを利用する場合
       }
     };
 
