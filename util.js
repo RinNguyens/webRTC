@@ -5,13 +5,14 @@
  * @param {array} asset 合成する素材canvas(id)
  * @return {void}
  */
-async function concatCanvas(base, asset){
+async function concatCanvas(base, asset, wh){
   const canvas = document.querySelector(base);
   const ctx = canvas.getContext("2d");
 
   for(let i=0; i<asset.length; i++){
     const image1 = await getImagefromCanvas(asset[i]);
-    ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
+    console.log(wh, 'width');
+    ctx.drawImage(image1, 0, 0, wh.width, wh.height);
   }
 }
 

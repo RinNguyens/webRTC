@@ -23,9 +23,9 @@ body {
 }
 
 #btn-shutter {
- z-index: 20;
- background: none;
- border: none;
+  z-index: 20;
+  background: none;
+  border: none;
 }
 
 #frame-inner {
@@ -48,7 +48,6 @@ body {
   margin-right: 5px;
 }
 
-
 /*---------------------------------------*/
 /* ダイアログ                            */
 /*---------------------------------------*/
@@ -69,20 +68,42 @@ body {
   border: 3px solid gray;
   background-color: white;
   margin: 100px;
-  padding: 10px;
+  padding: 15px;
+  height: 100%;
 }
 
 #dialog-result {
-  width: 650px;
+  height: 85%;
+  position: relative;
+}
+
+#wrapImg {
+  height: 80%;
+  object-fit: cover;
+  background-size: cover;
+}
+
+.btnBottom {
+  text-align: center;
+  margin-top: 50px;
 }
 
 #dialog-result-close {
   cursor: pointer;
+  position: absolute;
+  right: -5%;
+  top: -50px;
+  width: 80px;
+  height: 80px;
 }
 
 #dialog-result-dl {
-  width: 650px;
-  height: 60px;
+  border: none;
+  background: none;
+}
+#dialog-result-dl > img {
+  width: 100px;
+  height: 100px;
 }
 
 #dialog-nowloading {
