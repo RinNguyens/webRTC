@@ -48,6 +48,13 @@ body {
   margin-right: 5px;
 }
 
+#hand {
+  z-index: 5;
+  position: absolute;
+  top: 45%;
+  left: -16%;
+}
+
 /*---------------------------------------*/
 /* ダイアログ                            */
 /*---------------------------------------*/
@@ -65,8 +72,8 @@ body {
 
 .dialog {
   display: none;
-  border: 3px solid gray;
-  background-color: white;
+  border: 3px solid #EBD8B9;
+  background-color: #EBD8B9;
   margin: 100px;
   padding: 15px;
   height: 100%;
