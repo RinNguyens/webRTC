@@ -1,13 +1,87 @@
+#content {
+  width: 125%;
+  height: 100%;
+  position: relative;
+  width: 100%;
+}
+
+#camera {
+  position: absolute;
+  z-index: 10;
+}
+
+#frame {
+  position: absolute;
+  z-index: 20;
+  left: -10%;
+  top: 25%;
+  transform: skewX(10deg);
+}
+
+#still {
+  display: none;
+  transform: skewX(10deg);
+}
+
+#result {
+  z-index: 20;
+}
+
+#hand {
+  z-index: 15;
+  position: absolute;
+  top: 41%;
+}
+
+.handImg {
+  width: 100%;
+  height: 100%;
+  margin-left: -10%;
+}
+
+#hand {
+  -webkit-animation: cssAnimation 10s forwards;
+  animation: cssAnimation 10s forwards;
+}
+
+@keyframes cssAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
+
+@-webkit-keyframes cssAnimation {
+  0% {
+    opacity: 1;
+  }
+
+  90% {
+    opacity: 1;
+  }
+
+  100% {
+    opacity: 0;
+  }
+}
 #wrapper {
   margin: 0 0;
   max-width: 100%;
+  width: 100%;
 }
 
 #shutter-inner {
   z-index: 20;
   position: absolute;
   bottom: 0;
-  left: 45%;
+  left: 50%;
   margin-bottom: -100px;
 }
 
