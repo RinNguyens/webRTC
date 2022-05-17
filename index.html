@@ -69,7 +69,10 @@
         <p>
           <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
         </p>
-        <p id="wrapImg"><canvas id="result" ></canvas></p>
+        <div id="wrapImg">
+          <canvas id="frameResult" width="250" height="250"></canvas>
+          <canvas id="resultImg" ></canvas>
+        </div>
         <div class="btnBottom">
           <button id="dialog-result-dl" type="button">
             <img src="icon/download-solid.png" width="48" height="48">
@@ -97,6 +100,8 @@
     //-----------------------------------------------------
     const VIDEO = document.querySelector("#camera"); // <video>
     const FRAME = document.querySelector("#frame"); // <canvas>
+    const FRAMERESULT = document.querySelector("#frameResult"); // <canvas>
+    const RESULTIMG = document.querySelector("#resultImg");
     const STILL = document.querySelector("#still"); // <canvas>
     const SE = document.querySelector('#se');
     let w = window.innerWidth;
@@ -138,6 +143,7 @@
       // フレーム初期化
       //-----------------------------
       drawFrame(FRAMES[0].large); // 初期フレームを表示
+      drawFrameCopy(FRAMES[0].large)
       setFrameList(); // 切り替え用のフレーム一覧を表示
 
       //-----------------------------
@@ -150,7 +156,7 @@
 
         // 画像の生成
         onShutter(); // カメラ映像から静止画を取得
-        concatCanvas("#result", ["#still", "#frame"], WH); // フレームと合成
+        // concatCanvas("#result", ["#still", "#frame"], WH); // フレームと合成
 
         // 最終結果ダイアログを表示
         setTimeout(() => { // 演出目的で少しタイミングをずらす
@@ -183,9 +189,6 @@
           .then((stream) => {
             VIDEO.srcObject = stream;
             VIDEO.play();
-            // VIDEO.onloadedmetadata = (e) => {
-            //   VIDEO.play();
-            // };
           })
           .catch((err) => {
             console.log(`${err.name}: ${err.message}`);
@@ -242,18 +245,35 @@
       dialogShow(modal);
     }
 
+    function drawFrameCopy(path) {
+      const modal = "#dialog-nowloading";
+      const image = new Image();
+      image.src = path;
+      image.onload = () => {
+        const ctx = FRAMERESULT.getContext("2d");
+        ctx.clearRect(0, 0, frameResult.width, frameResult.height);
+        ctx.drawImage(image, 0, 0, frameResult.width, frameResult.height);
+
+        setTimeout(() => {
+          dialogHide(modal);
+        }, 100);
+      };
+      dialogShow(modal);
+    }
+
     /**
      * シャッターボタンをクリック
      *
      * @return {void}
      **/
     function onShutter() {
-      const ctx = STILL.getContext("2d");
+      const ctx = RESULTIMG.getContext("2d");
+      console.log(RESULTIMG.width, RESULTIMG.height ,'RESULTIMG')
       // 前回の結果を消去
-      ctx.clearRect(0, 0, STILL.width, STILL.height);
+      ctx.clearRect(0, 0, RESULTIMG.width, RESULTIMG.height);
 
       // videoを画像として切り取り、canvasに描画
-      ctx.drawImage(VIDEO, 0, 0, STILL.width, STILL.height);
+      ctx.drawImage(VIDEO, 0, 0, RESULTIMG.width, RESULTIMG.height);
     }
 
     /**

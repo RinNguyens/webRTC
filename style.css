@@ -103,6 +103,22 @@ body {
   height: 80%;
   object-fit: cover;
   background-size: cover;
+  position: relative;
+}
+
+#frameResult {
+  position: absolute;
+  top: 50%;
+  left: 20%;
+  transform: skewX(10deg);
+  z-index: 20;
+}
+
+#resultImg {
+  width: 100%;
+  height: auto;
+  background-size: cover;
+  z-index: 5;
 }
 
 .btnBottom {
