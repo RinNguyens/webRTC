@@ -177,7 +177,7 @@ body, p {
 #frameResult {
   position: absolute;
   top: 51%;
-  left: 25%;
+  left: 30%;
   transform: skewX(10deg);
   z-index: 20;
 }
