@@ -1,7 +1,7 @@
 * {
   box-sizing: border-box;
 }
-body {
+body, p {
   margin: 0;
 }
 #wrapper {
@@ -12,6 +12,66 @@ body {
 #contents {
   width: 100%;
   height: 100%;
+}
+
+#detail {
+  position: absolute;
+  z-index: 20;
+  display: flex;
+  align-items: center;
+  border-bottom: 2px solid #FFFFFF;
+  margin: 0px 20px;
+  padding-top: 20px;
+  top: 0;
+  padding-bottom: 20px;
+}
+.wrapTitle {
+  display: flex;
+  align-items: center;
+}
+.title {
+  font-size: 50px;
+  color: #FFFFFF;
+}
+.bannerTop {
+  width: 50%;
+  margin-left: 15px;
+}
+.detailImg {
+  width: 80px;
+  height: 80px;
+}
+
+#product {
+  position: absolute;
+  z-index: 15;
+  color: #FFFFFF;
+  top: 10%;
+  margin: 0px 20px;
+}
+
+.name {
+  font-size: 35px;
+}
+.product-overview {
+  font-size: 50px;
+}
+.product-detail {
+  display: flex;
+  font-size: 25px;
+}
+.size {
+  margin-right: 35px;
+}
+
+#detailWatch {
+  position: absolute;
+  z-index: 15;
+  top: 39%;
+  left: 30%;
+}
+.notiWatch {
+  width: 400px;
 }
 
 #shutter-inner {
@@ -26,6 +86,10 @@ body {
   z-index: 20;
   background: none;
   border: none;
+}
+
+.shutter-detail {
+  width: 300px;
 }
 
 #frame-inner {
@@ -55,11 +119,15 @@ body {
   left: -16%;
 }
 
+.bannerTop {
+  -webkit-animation: cssAnimation 10s forwards; 
+  animation: cssAnimation 10s forwards;
+}
 #hand {
   -webkit-animation: cssAnimation 10s forwards; 
   animation: cssAnimation 10s forwards;
 }
-@keyframes cssAnimation {
+/* @keyframes cssAnimation {
   0%   {opacity: 1;}
   90%  {opacity: 1;}
   100% {opacity: 0;}
@@ -68,7 +136,7 @@ body {
   0%   {opacity: 1;}
   90%  {opacity: 1;}
   100% {opacity: 0;}
-}
+} */
 
 /*---------------------------------------*/
 /* ダイアログ                            */

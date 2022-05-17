@@ -40,6 +40,26 @@
 
       <video id="camera" autoplay muted playsinline></video>
 
+      <div id="detail">
+        <div class="wrapTitle">
+            <p class="title">Watch Master</p>
+            <img src="image/bannerTop.png" class="bannerTop"  />
+        </div>
+        <img src="icon/detail.png" class="detailImg"  />
+      </div>
+      <div id="product">
+        <p class="name">SBGA211</p>
+        <p class="product-overview">カメラ映像カメラ映像カメラ映像</p>
+        <div class="product-detail">
+          <p class="size">Case size: 41.0mm</p>
+          <p class="tax">Y682,200 (tax inc.)</p>
+        </div>
+      </div>
+
+      <div id="detailWatch">
+        <img src="image/detailWatch.png" class="notiWatch" />
+      </div>
+
       <div id="hand">
         <img src="icon/hand.png" width="100%" height="100%"/>
       </div>
@@ -48,7 +68,10 @@
 
       <!-- シャッター -->
       <div id="shutter-inner">
-        <button id="btn-shutter" type="button"><img src="icon/camera-solid.png" width="150" height="150"></button>
+        <div class="container-shutter">
+          <img src="image/shutterDetail.png" class="shutter-detail" />
+        </div>
+        <button id="btn-shutter" type="button"><img src="icon/camera-solid.png" width="200" height="200"></button>
       </div>
 
       <!-- フレーム切り替え -->
@@ -124,8 +147,8 @@
       video: {
         width: 1920,
         height: 1080,
-        // facingMode: "user" // フロントカメラを利用する
-        facingMode: { exact: "environment" }  // リアカメラを利用する場合
+        facingMode: "user" // フロントカメラを利用する
+        // facingMode: { exact: "environment" }  // リアカメラを利用する場合
       }
     };
 
