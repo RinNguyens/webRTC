@@ -201,6 +201,7 @@ body, p {
   top: -50px;
   width: 80px;
   height: 80px;
+  z-index: 30;
 }
 
 #dialog-result-dl {
