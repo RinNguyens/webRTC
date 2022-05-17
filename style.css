@@ -47,7 +47,7 @@ body, p {
   z-index: 15;
   color: #FFFFFF;
   top: 10%;
-  margin: 0px 20px;
+  margin: 20px 20px;
 }
 
 .name {
@@ -68,7 +68,7 @@ body, p {
   position: absolute;
   z-index: 15;
   top: 39%;
-  left: 30%;
+  left: 28%;
 }
 .notiWatch {
   width: 400px;
