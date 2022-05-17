@@ -67,8 +67,8 @@ body, p {
 #detailWatch {
   position: absolute;
   z-index: 15;
-  top: 38%;
-  left: 28%;
+  top: 37%;
+  left: 27%;
 }
 .notiWatch {
   width: 400px;
@@ -176,8 +176,8 @@ body, p {
 
 #frameResult {
   position: absolute;
-  top: 50%;
-  left: 20%;
+  top: 51%;
+  left: 25%;
   transform: skewX(10deg);
   z-index: 20;
 }
