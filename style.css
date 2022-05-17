@@ -119,24 +119,35 @@ body, p {
   left: -16%;
 }
 
-.bannerTop {
-  -webkit-animation: cssAnimation 10s forwards; 
-  animation: cssAnimation 10s forwards;
+.bannerTop, .notiWatch, .shutter-detail {
+  -webkit-animation: twoSecond 2s forwards; 
+  animation: twoSecond 2s forwards;
 }
 #hand {
-  -webkit-animation: cssAnimation 10s forwards; 
-  animation: cssAnimation 10s forwards;
+  -webkit-animation: fiveSecond 5s forwards; 
+  animation: fiveSecond 5s forwards;
 }
-/* @keyframes cssAnimation {
+@keyframes fiveSecond {
   0%   {opacity: 1;}
   90%  {opacity: 1;}
   100% {opacity: 0;}
 }
-@-webkit-keyframes cssAnimation {
+@-webkit-keyframes fiveSecond {
   0%   {opacity: 1;}
   90%  {opacity: 1;}
   100% {opacity: 0;}
-} */
+}
+
+@keyframes twoSecond {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
+@-webkit-keyframes twoSecond {
+  0%   {opacity: 1;}
+  90%  {opacity: 1;}
+  100% {opacity: 0;}
+}
 
 /*---------------------------------------*/
 /* ダイアログ                            */
