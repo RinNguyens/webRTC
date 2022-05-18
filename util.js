@@ -12,7 +12,7 @@ async function concatCanvas(base, asset, wh){
   for(let i=0; i<asset.length; i++){
     const image1 = await getImagefromCanvas(asset[i]);
     console.log(wh, 'width');
-    ctx.drawImage(image1, 0, 0, wh.width, wh.height);
+    ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
   }
 }
 
