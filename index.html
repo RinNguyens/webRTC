@@ -11,7 +11,7 @@
       position: fixed;
       right: 0;
       bottom: 0;
-      min-width: 100%; 
+      min-width: 100%;
       min-height: 100%;
     }
 
@@ -22,6 +22,7 @@
     #still {
       display: none;
     }
+
     #result {
       width: 100%;
       height: 100%;
@@ -38,10 +39,10 @@
 
       <div id="detail">
         <div class="wrapTitle">
-            <p class="title">Watch Master</p>
-            <img src="image/bannerTop.png" class="bannerTop"  />
+          <p class="title">Watch Master</p>
+          <img src="image/bannerTop.png" class="bannerTop" />
         </div>
-        <img src="icon/detail.png" id="show-Detail" class="detailImg"  />
+        <img src="icon/detail.png" id="show-Detail" class="detailImg" />
       </div>
       <div id="product">
         <p class="name">SBGA211</p>
@@ -52,10 +53,10 @@
         </div>
       </div>
 
-     
+
 
       <div id="hand">
-        <img src="icon/hand.png" width="100%" height="100%"/>
+        <img src="icon/hand.png" width="100%" height="100%" />
       </div>
       <!-- フレーム -->
       <div id="detailWatch">
@@ -93,7 +94,7 @@
         </p>
         <div id="wrapImg">
           <canvas id="frameResult" width="220" height="220"></canvas>
-          <canvas id="resultImg" ></canvas>
+          <canvas id="resultImg"></canvas>
         </div>
         <div id="content-detail">
           <div id="fitting">
@@ -166,6 +167,7 @@
     // グローバル変数
     //-----------------------------------------------------
     const VIDEO = document.querySelector("#camera"); // <video>
+    const idVideo = document.getElementById("camera");
     const FRAME = document.querySelector("#frame"); // <canvas>
     const FRAMERESULT = document.querySelector("#frameResult"); // <canvas>
     const RESULTIMG = document.querySelector("#resultImg");
@@ -178,7 +180,6 @@
       height: h
     };
 
-    console.log(w,h)
     /** フレーム素材一覧 */
     const FRAMES = [{
       large: "image/watch.png",
@@ -220,7 +221,7 @@
         // SE再生＆映像停止
         VIDEO.pause();
         SE.play();
-        
+
         // 画像の生成
         onShutter(); // カメラ映像から静止画を取得
         // concatCanvas("#result", ["#still", "#frame"], WH); // フレームと合成
@@ -347,6 +348,7 @@
      **/
     function onShutter() {
       const ctx = RESULTIMG.getContext("2d");
+      
       ctx.clearRect(0, 0, RESULTIMG.width, RESULTIMG.height);
       // videoを画像として切り取り、canvasに描画
       ctx.drawImage(VIDEO, 0, 0, RESULTIMG.width, RESULTIMG.height);
