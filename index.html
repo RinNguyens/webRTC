@@ -230,16 +230,17 @@
         // 最終結果ダイアログを表示
         setTimeout(() => { // 演出目的で少しタイミングをずらす
           dialogShow("#dialog-result");
-        }, 300);
+        }, 400);
       });
 
       document.querySelector("#show-Detail").addEventListener("click", () => {
         VIDEO.pause();
         changeWith("#dialog-result", "auto");
+        showTag("#content-detail");
         dialogHideImgResult("#wrapImg", "#download");
         setTimeout(() => {
           dialogShow("#dialog-result");
-        }, 300);
+        }, 400);
       })
 
       //-----------------------------
@@ -385,6 +386,9 @@
     }
     function hiddenTag(id) {
       document.querySelector(id).style.display = "none";
+    }
+    function showTag(id) {
+      document.querySelector(id).style.display = "inline-grid";
     }
     function changeWith(id, value) {
       document.querySelector(id).style.height = value;
