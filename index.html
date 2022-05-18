@@ -364,9 +364,9 @@
     function onShutter() {
       const ctx = RESULTIMG.getContext("2d");
 
-      ctx.clearRect(0, 0, 762, 1683);
+      ctx.clearRect(0, 0, RESULTIMG.width, RESULTIMG.height);
       // videoを画像として切り取り、canvasに描画
-      ctx.drawImage(VIDEO, 0, 0, 762, 1683);
+      ctx.drawImage(VIDEO, 0, 0, RESULTIMG.width, RESULTIMG.height);
     }
 
     /**
