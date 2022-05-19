@@ -11,7 +11,6 @@ async function concatCanvas(base, asset, wh){
 
   for(let i=0; i<asset.length; i++){
     const image1 = await getImagefromCanvas(asset[i]);
-    console.log(wh, 'width');
     ctx.drawImage(image1, 0, 0, canvas.width, canvas.height);
   }
 }
@@ -44,7 +43,7 @@ function getImagefromCanvas(id){
 function canvasDownload(id, base64){
   const blob    = getBlobFromCanvas(id, base64);       // canvasをBlobデータとして取得
   const dataURI = window.URL.createObjectURL(blob);  // Blobデータを「URI」に変換
-  const filename = makeid(7);
+  const filename = makeName(7);
   // JS内部でクリックイベントを発動→ダウンロード
   const event = document.createEvent("MouseEvents");
   event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
@@ -66,7 +65,6 @@ function getBlobFromCanvas(id, base64){
   // const canvas = document.querySelector(id);
   // const base64 = canvas.toDataURL(type);              // "data:image/png;base64,iVBORw0k～"
   const tmp  = base64.split(",");      
-  console.log(tmp, 'tmp');               // ["data:image/png;base64,", "iVBORw0k～"]
   const data = atob(tmp[1]);                          // 右側のデータ部分(iVBORw0k～)をデコード
   const mime = tmp[0].split(":")[1].split(";")[0];    // 画像形式(image/png)を取り出す
 
@@ -81,7 +79,7 @@ function getBlobFromCanvas(id, base64){
   );
 }
 
-function makeid(length) {
+function makeName(length) {
   var result           = '';
   var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
   var charactersLength = characters.length;
