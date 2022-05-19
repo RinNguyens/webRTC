@@ -218,8 +218,8 @@ p, h2, h1 {
 
 #frameResult {
   position: absolute;
-  top: 48%;
-  left: 35%;
+  top: 52%;
+  left: 33%;
   transform: skewX(10deg);
   z-index: 20;
 }
