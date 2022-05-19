@@ -225,9 +225,13 @@ p, h2, h1 {
 
 #resultImg {
   width: 100%;
-  height: auto;
+  height: 100%;
   z-index: 5;
   position: absolute;
+}
+
+#photo {
+  width: 100%;
 }
 
 .btnBottom {
