@@ -233,6 +233,7 @@ p, h2, h1 {
 
 #photo {
   width: 100%;
+  background-size: cover;
 }
 
 .btnBottom {
