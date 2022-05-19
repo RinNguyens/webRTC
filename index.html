@@ -21,8 +21,6 @@
 
     #still {
       display: none;
-      width: 100%;
-      height: 100%;
     }
 
     #result {
@@ -97,7 +95,7 @@
     </section>
 
     <!-- 合成用Canvas(不可視) -->
-    <canvas id="still" ></canvas>
+    <canvas id="still" width="700" height="1000"></canvas>
 
     <!-- ダイアログ -->
     <div id="dialog-outer">
@@ -372,8 +370,6 @@
 
       var data = STILL.toDataURL('image/png');
       photo.setAttribute('src', data);
-
-
     }
 
     /**
