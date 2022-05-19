@@ -41,10 +41,10 @@ function getImagefromCanvas(id){
  * @param {string} [filename]  DL時のデフォルトファイル名
  * @return {void}
  */
-function canvasDownload(id, type="image/png", filename="photo"){
-  const blob    = getBlobFromCanvas(id, type);       // canvasをBlobデータとして取得
+function canvasDownload(id, base64){
+  const blob    = getBlobFromCanvas(id, base64);       // canvasをBlobデータとして取得
   const dataURI = window.URL.createObjectURL(blob);  // Blobデータを「URI」に変換
-
+  const filename = makeid(7);
   // JS内部でクリックイベントを発動→ダウンロード
   const event = document.createEvent("MouseEvents");
   event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
@@ -54,6 +54,7 @@ function canvasDownload(id, type="image/png", filename="photo"){
   a.dispatchEvent(event);   // イベント発動
 }
 
+
 /**
   * 現状のCanvasを画像データとして返却
   *
@@ -61,10 +62,11 @@ function canvasDownload(id, type="image/png", filename="photo"){
   * @param {string}  [type] MimeType
   * @return {blob}
   */
-function getBlobFromCanvas(id, type="image/png"){
-  const canvas = document.querySelector(id);
-  const base64 = canvas.toDataURL(type);              // "data:image/png;base64,iVBORw0k～"
-  const tmp  = base64.split(",");                     // ["data:image/png;base64,", "iVBORw0k～"]
+function getBlobFromCanvas(id, base64){
+  // const canvas = document.querySelector(id);
+  // const base64 = canvas.toDataURL(type);              // "data:image/png;base64,iVBORw0k～"
+  const tmp  = base64.split(",");      
+  console.log(tmp, 'tmp');               // ["data:image/png;base64,", "iVBORw0k～"]
   const data = atob(tmp[1]);                          // 右側のデータ部分(iVBORw0k～)をデコード
   const mime = tmp[0].split(":")[1].split(";")[0];    // 画像形式(image/png)を取り出す
 
@@ -77,4 +79,15 @@ function getBlobFromCanvas(id, type="image/png"){
   return(
     new Blob([buff], { type: mime })
   );
+}
+
+function makeid(length) {
+  var result           = '';
+  var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+  var charactersLength = characters.length;
+  for ( var i = 0; i < length; i++ ) {
+    result += characters.charAt(Math.floor(Math.random() * 
+charactersLength));
+ }
+ return result;
 }

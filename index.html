@@ -27,6 +27,7 @@
       width: 100%;
       height: 100%;
     }
+
     #shadow {
       position: absolute;
       height: 38%;
@@ -51,21 +52,21 @@
       <div id="shadow">
       </div>
 
-        <div id="detail">
-          <div class="wrapTitle">
-            <p class="title">Watch Master</p>
-            <img src="image/bannerTop.png" class="bannerTop" />
-          </div>
-          <img src="icon/detail.png" id="show-Detail" class="detailImg" />
+      <div id="detail">
+        <div class="wrapTitle">
+          <p class="title">Watch Master</p>
+          <img src="image/bannerTop.png" class="bannerTop" />
         </div>
-        <div id="product">
-          <p class="name">SBGA211</p>
-          <p class="product-overview">カメラ映像カメラ映像カメラ映像</p>
-          <div class="product-detail">
-            <p class="size">Case size: 41.0mm</p>
-            <p class="tax">Y682,200 (tax inc.)</p>
-          </div>
+        <img src="icon/detail.png" id="show-Detail" class="detailImg" />
+      </div>
+      <div id="product">
+        <p class="name">SBGA211</p>
+        <p class="product-overview">カメラ映像カメラ映像カメラ映像</p>
+        <div class="product-detail">
+          <p class="size">Case size: 41.0mm</p>
+          <p class="tax">Y682,200 (tax inc.)</p>
         </div>
+      </div>
 
       <div id="hand">
         <img src="icon/hand.png" width="100%" height="100%" />
@@ -105,12 +106,12 @@
           <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
         </p>
         <div id="wrapImg">
-          <div>
-          <canvas id="frameResult" width="190" height="190"></canvas>
-
-          </div>
+          
           <!-- <canvas id="resultImg" width="762" height="1680"></canvas> -->
           <div id="resultImg">
+            <div>
+              <canvas id="frameResult" width="190" height="190"></canvas>
+            </div>
             <img id="photo" />
           </div>
         </div>
@@ -155,7 +156,7 @@
                 <img src="image/phone.png" class="phone" />
               </a></p>
             <p>
-                <img src="image/home.png" class="home" />
+              <img src="image/home.png" class="home" />
             </p>
 
           </div>
@@ -181,6 +182,7 @@
   </div>
 
   <script src="util.js" type="text/javascript"></script>
+  <script src="html2canvas.js"></script>
   <script>
     //-----------------------------------------------------
     // グローバル変数
@@ -194,6 +196,7 @@
     const SE = document.querySelector('#se');
     const photo = document.getElementById("photo");
 
+    let base64 = null;
 
     /** フレーム素材一覧 */
     const FRAMES = [{
@@ -207,8 +210,8 @@
       video: {
         width: 1920,
         height: 1080,
-        // facingMode: "user" // フロントカメラを利用する
-        facingMode: { exact: "environment" }  // リアカメラを利用する場合
+        facingMode: "user" // フロントカメラを利用する
+        // facingMode: { exact: "environment" }  // リアカメラを利用する場合
       }
     };
 
@@ -221,6 +224,7 @@
       //-----------------------------
       syncCamera();
       VIDEO.play();
+
 
       //-----------------------------
       // フレーム初期化
@@ -239,6 +243,9 @@
 
         // 画像の生成
         onShutter(); // カメラ映像から静止画を取得
+
+        // get width and height IMG
+
         // concatCanvas("#resultImg", ["#frameResult"], WH); // フレームと合成
         changeWidth("#dialog-result", "80%");
         hiddenTag("#content-detail");
@@ -270,7 +277,26 @@
 
       // ダウンロードボタン
       document.querySelector("#dialog-result-dl").addEventListener("click", (e) => {
-        canvasDownload("#resultImg");
+        // canvasDownload("#photo", base64);
+        html2canvas(document.querySelector("#resultImg")).then(canvas => {
+          var dataURL = canvas.toDataURL("image/png");
+          var data = atob(dataURL.substring("data:image/png;base64,".length)),
+            asArray = new Uint8Array(data.length);
+
+          for (var i = 0, len = data.length; i < len; ++i) {
+            asArray[i] = data.charCodeAt(i);
+          }
+          var filename = "11111";
+          var blob = new Blob([asArray.buffer], { type: "image/png" });
+          const dataURI = window.URL.createObjectURL(blob); 
+          const event = document.createEvent("MouseEvents");
+          event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+          const a = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+          a.href = dataURI;         // URI化した画像
+          a.download = filename;    // デフォルトのファイル名
+          a.dispatchEvent(event);   // イベント発動
+          // saveAs(blob, "photo.png");
+        });
       });
     };
 
@@ -363,14 +389,27 @@
      **/
     function onShutter() {
       const ctx = STILL.getContext("2d");
-      console.log(STILL.getBoundingClientRect())
 
       ctx.clearRect(0, 0, STILL.width, STILL.height);
+
       // videoを画像として切り取り、canvasに描画
       ctx.drawImage(VIDEO, 0, 0, STILL.width, STILL.height);
 
-      var data = STILL.toDataURL('image/png');
-      photo.setAttribute('src', data);
+      base64 = STILL.toDataURL('image/png');
+      photo.setAttribute('src', base64);
+
+      const img = new Image();
+
+      img.src = base64;
+      console.log(img)
+
+      img.onload = function() {
+        const imgWidth = img.naturalWidth;
+        const imgHeight = img.naturalHeight;
+
+        console.log('imgWidth: ', imgWidth);
+        console.log('imgHeight: ', imgHeight);
+      };
     }
 
     /**
