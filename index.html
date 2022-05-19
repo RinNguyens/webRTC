@@ -95,7 +95,7 @@
     </section>
 
     <!-- 合成用Canvas(不可視) -->
-    <!-- <canvas id="still" width="640" height="480"></canvas> -->
+    <canvas id="still" width="640" height="480"></canvas>
 
     <!-- ダイアログ -->
     <div id="dialog-outer">
@@ -182,18 +182,13 @@
     // グローバル変数
     //-----------------------------------------------------
     const VIDEO = document.querySelector("#camera"); // <video>
-    const idVideo = document.getElementById("camera");
+    const idVideo = document.getElementById("dialog-result");
     const FRAME = document.querySelector("#frame"); // <canvas>
     const FRAMERESULT = document.querySelector("#frameResult"); // <canvas>
     const RESULTIMG = document.querySelector("#resultImg");
     const STILL = document.querySelector("#still"); // <canvas>
     const SE = document.querySelector('#se');
-    let w = window.innerWidth;
-    let h = window.innerHeight;
-    const WH = {
-      width: w,
-      height: h
-    };
+
 
     /** フレーム素材一覧 */
     const FRAMES = [{
@@ -363,6 +358,7 @@
      **/
     function onShutter() {
       const ctx = RESULTIMG.getContext("2d");
+      console.log(RESULTIMG.getBoundingClientRect())
 
       ctx.clearRect(0, 0, RESULTIMG.width, RESULTIMG.height);
       // videoを画像として切り取り、canvasに描画
