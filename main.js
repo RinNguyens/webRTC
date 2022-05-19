@@ -1,4 +1,3 @@
-
 //-----------------------------------------------------
 // グローバル変数
 //-----------------------------------------------------
@@ -8,16 +7,18 @@ const FRAME = document.querySelector("#frame"); // <canvas>
 const FRAMERESULT = document.querySelector("#frameResult"); // <canvas>
 const RESULTIMG = document.querySelector("#resultImg");
 const STILL = document.querySelector("#still"); // <canvas>
-const SE = document.querySelector('#se');
+const SE = document.querySelector("#se");
 const photo = document.getElementById("photo");
 
 let base64 = null;
 
 /** フレーム素材一覧 */
-const FRAMES = [{
-  large: "image/watch.png",
-  small: "image/w.png"
-}];
+const FRAMES = [
+  {
+    large: "image/watch.png",
+    small: "image/w.png",
+  },
+];
 
 /** カメラ設定 */
 const CONSTRAINTS = {
@@ -26,8 +27,8 @@ const CONSTRAINTS = {
     width: 1920,
     height: 1080,
     // facingMode: "user" // フロントカメラを利用する
-    facingMode: { exact: "environment" }  // リアカメラを利用する場合
-  }
+    facingMode: { exact: "environment" }, // リアカメラを利用する場合
+  },
 };
 
 //-----------------------------------------------------
@@ -40,12 +41,11 @@ window.onload = () => {
   syncCamera();
   VIDEO.play();
 
-
   //-----------------------------
   // フレーム初期化
   //-----------------------------
   drawFrame(FRAMES[0].large); // 初期フレームを表示
-  drawFrameCopy(FRAMES[0].large)
+  drawFrameCopy(FRAMES[0].large);
   setFrameList(); // 切り替え用のフレーム一覧を表示
 
   //-----------------------------
@@ -66,7 +66,8 @@ window.onload = () => {
     hiddenTag("#content-detail");
     dialogShowImgResult("#wrapImg", "#download");
     // 最終結果ダイアログを表示
-    setTimeout(() => { // 演出目的で少しタイミングをずらす
+    setTimeout(() => {
+      // 演出目的で少しタイミングをずらす
       dialogShow("#dialog-result");
     }, 400);
   });
@@ -79,21 +80,23 @@ window.onload = () => {
     setTimeout(() => {
       dialogShow("#dialog-result");
     }, 400);
-  })
+  });
 
   //-----------------------------
   // ダイアログ
   //-----------------------------
   // 閉じるボタン
-  document.querySelector("#dialog-result-close").addEventListener("click", (e) => {
-    VIDEO.play();
-    dialogHide("#dialog-result");
-  });
+  document
+    .querySelector("#dialog-result-close")
+    .addEventListener("click", (e) => {
+      VIDEO.play();
+      dialogHide("#dialog-result");
+    });
 
   // ダウンロードボタン
   document.querySelector("#dialog-result-dl").addEventListener("click", (e) => {
     // canvasDownload("#photo", base64);
-    html2canvas(document.querySelector("#resultImg")).then(canvas => {
+    html2canvas(document.querySelector("#resultImg")).then((canvas) => {
       var dataURL = canvas.toDataURL("image/png");
       var data = atob(dataURL.substring("data:image/png;base64,".length)),
         asArray = new Uint8Array(data.length);
@@ -105,11 +108,27 @@ window.onload = () => {
       var blob = new Blob([asArray.buffer], { type: "image/png" });
       const dataURI = window.URL.createObjectURL(blob);
       const event = document.createEvent("MouseEvents");
-      event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
+      event.initMouseEvent(
+        "click",
+        true,
+        false,
+        window,
+        0,
+        0,
+        0,
+        0,
+        0,
+        false,
+        false,
+        false,
+        false,
+        0,
+        null
+      );
       const a = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
-      a.href = dataURI;         // URI化した画像
-      a.download = filename;    // デフォルトのファイル名
-      a.dispatchEvent(event);   // イベント発動
+      a.href = dataURI; // URI化した画像
+      a.download = filename; // デフォルトのファイル名
+      a.dispatchEvent(event); // イベント発動
       // saveAs(blob, "photo.png");
     });
   });
@@ -121,7 +140,8 @@ window.onload = () => {
 
 async function syncCamera() {
   try {
-    await navigator.mediaDevices.getUserMedia(CONSTRAINTS)
+    await navigator.mediaDevices
+      .getUserMedia(CONSTRAINTS)
       .then((stream) => {
         VIDEO.srcObject = stream;
         VIDEO.play();
@@ -142,7 +162,7 @@ async function syncCamera() {
 function setFrameList() {
   const list = document.querySelector("#framelist");
   let i = 0;
-  FRAMES.forEach(item => {
+  FRAMES.forEach((item) => {
     const li = document.createElement("li");
     li.innerHTML = `<img src="${item.small}">`; // <li><img ...></li>
     li.classList.add("framelist"); // <li class="framelist" ...
@@ -152,7 +172,7 @@ function setFrameList() {
     li.addEventListener("click", (e) => {
       const idx = e.target.parentElement.getAttribute("data-index"); // 親(parent)がli
       drawFrame(FRAMES[idx].large);
-    })
+    });
 
     // ulに追加
     list.appendChild(li);
@@ -210,8 +230,8 @@ function onShutter() {
   // videoを画像として切り取り、canvasに描画
   ctx.drawImage(VIDEO, 0, 0, STILL.width, STILL.height);
 
-  base64 = STILL.toDataURL('image/png');
-  photo.setAttribute('src', base64);
+  base64 = STILL.toDataURL("image/png");
+  photo.setAttribute("src", base64);
 
   const img = new Image();
 
@@ -220,7 +240,6 @@ function onShutter() {
   img.onload = function () {
     const imgWidth = img.naturalWidth;
     const imgHeight = img.naturalHeight;
-
   };
 }
 

@@ -271,10 +271,9 @@ h1 {
   position: relative;
 }
 
-
 #frameResult {
   position: absolute;
-  top: 50%;
+  top: 51%;
   left: 32.5%;
   transform: skewX(10deg);
   z-index: 20;
@@ -313,7 +312,7 @@ h1 {
   background: none;
 }
 
-#dialog-result-dl>img {
+#dialog-result-dl > img {
   width: 100px;
   height: 100px;
 }
@@ -359,7 +358,7 @@ h1 {
 }
 
 /* Content-detail */
-#fitting>h1 {
+#fitting > h1 {
   text-align: center;
   font-size: 55px;
   font-weight: normal;
@@ -370,7 +369,7 @@ h1 {
   margin-left: 50px;
 }
 
-.base>h2 {
+.base > h2 {
   font-size: 50px;
   font-weight: 500;
 }
@@ -379,11 +378,12 @@ h1 {
   margin-top: 40px;
 }
 
-.base-text>p {
+.base-text > p {
   font-size: 27px;
 }
 
-.phone-number {}
+.phone-number {
+}
 
 .home,
 .phone {
