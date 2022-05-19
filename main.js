@@ -62,7 +62,7 @@ window.onload = () => {
     // get width and height IMG
 
     // concatCanvas("#resultImg", ["#frameResult"], WH); // フレームと合成
-    changeWidth("#dialog-result", "65%");
+    changeWidth("#dialog-result", "80%");
     hiddenTag("#content-detail");
     dialogShowImgResult("#wrapImg", "#download");
     // 最終結果ダイアログを表示
