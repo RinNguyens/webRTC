@@ -124,12 +124,12 @@ p, h2, h1 {
 .bannerTop,
 .notiWatch,
 .shutter-detail {
-  -webkit-animation: twoSecond 2s forwards;
-  animation: twoSecond 2s forwards;
+  -webkit-animation: twoSecond 5s forwards;
+  animation: twoSecond 5s forwards;
 }
 #hand {
-  -webkit-animation: fiveSecond 5s forwards;
-  animation: fiveSecond 5s forwards;
+  -webkit-animation: fiveSecond 10s forwards;
+  animation: fiveSecond 10s forwards;
 }
 @keyframes fiveSecond {
   0% {
@@ -216,7 +216,7 @@ p, h2, h1 {
 
 #frameResult {
   position: absolute;
-  top: 43%;
+  top: 40%;
   left: 33%;
   transform: skewX(10deg);
   z-index: 20;
