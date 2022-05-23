@@ -47,7 +47,7 @@ function canvasDownload(id, base64){
   // JS内部でクリックイベントを発動→ダウンロード
   const event = document.createEvent("MouseEvents");
   event.initMouseEvent("click", true, false, window, 0, 0, 0, 0, 0, false, false, false, false, 0, null);
-  const a = document.createElementNS("http://www.w3.org/1999/xhtml", "a");
+  const a = document.createElement("a");
   a.href = dataURI;         // URI化した画像
   a.download = filename;    // デフォルトのファイル名
   a.dispatchEvent(event);   // イベント発動
