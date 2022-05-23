@@ -196,12 +196,15 @@
       }
       // Restrict scale
       scale = Math.min(Math.max(0.5, scale), 2);
+      const el = document.querySelector('#frame');
       // Apply scale transform
       el.style.transform = `scale(${scale})`;
     }
 
-    const el = document.querySelector('#frame');
-    document.onwheel = zoom;
+    window.addEventListener("wheel", function(e) {
+      e.preventDefault();
+      document.onwheel = zoom;
+    });
   </script>
 </body>
 
