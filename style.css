@@ -281,7 +281,7 @@ h1 {
 
 #resultImg {
   width: 100%;
-  z-index: 5;
+  z-index: 20;
   position: absolute;
 }
 
@@ -462,7 +462,7 @@ h1 {
   height: 38%;
   width: 100%;
   background-image: url(image/shadow.png);
-  z-index: 100;
+  z-index: 10;
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
