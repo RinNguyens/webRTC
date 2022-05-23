@@ -461,7 +461,7 @@ h1 {
 
 #shadowModal {
   position: absolute;
-  height: 38%;
+  height: 50%;
   width: 100%;
   background-image: url(image/shadow.png);
   z-index: 10;
