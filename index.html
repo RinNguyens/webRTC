@@ -181,27 +181,9 @@
     let scrollY = 0;
     let scale = 1;
     let scaleFactor = 0.01;
-    // clear canvas and draw two boxes
-    // function render(){
-    //   //context.clearRect(0, 0, canvas.width/scale, canvas.height/scale);
-    //   context.beginPath();
-    //   const image = new Image();
-    //   image.src = '/image/watch.png';
-    //   image.onload = () => {
-    //     const ctx = context;
-    //     ctx.clearRect(0, 0, frame.width, frame.height);
-    //     ctx.drawImage(image, 0, 0, frame.width, frame.height);
-    //   };
-    //   context.fill();
-    //   // canvas.style.width = '-webkit-fill-available';
-    //   requestAnimationFrame( render );
-    // }
-
-    // handlencursor keys to move scroll
+    
     function zoom(event) {
-      event.preventDefault();
       let direction = event.deltaY > 0 ? 1 : -1;
-
       if (event.deltaY < 0) {
         // Zoom in
         scale *= event.deltaY * -2;
@@ -210,39 +192,14 @@
         // Zoom out
         scale /= event.deltaY * 2;
       }
-
       // Restrict scale
-      scale = Math.min(Math.max(0.6, scale), 2);
-
+      scale = Math.min(Math.max(0.5, scale), 2);
       // Apply scale transform
       el.style.transform = `scale(${scale})`;
-      
     }
 
-    // // Handl mousenwheel zoom
-    // canvas.onwheel= function(e){
-    //   e.preventDefault();
-    //   context.clearRect(-cw, -ch, 2 * cw, 2 * ch)
-
-
-    //   let direction = e.deltaY > 0 ? 1 : -1;
-
-
-    //   scrollX += Math.round(e.offsetX * scaleFactor * direction);
-    //   scrollY += Math.round(e.offsetY * scaleFactor * direction);
-    //   scale += scaleFactor * direction;
-
-    //   context.setTransform(1, 0, 0, 1, 0, 0);
-
-    //   context.translate(cx, cy);
-    //   context.scale(scale, scale);
-    //   context.translate(-cx, -cy);
-    //   //render()
-    // }
     const el = document.querySelector('#frame');
     document.onwheel = zoom;
-    // render()
-
   </script>
 </body>
 
