@@ -212,10 +212,11 @@
       }
 
       // Restrict scale
-      scale = Math.min(Math.max(.125, scale), 10);
+      scale = Math.min(Math.max(0.6, scale), 2);
 
       // Apply scale transform
       el.style.transform = `scale(${scale})`;
+      
     }
 
     // // Handl mousenwheel zoom
