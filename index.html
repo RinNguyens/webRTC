@@ -178,6 +178,7 @@
     // global vars : canvas, scroll & scale
     let info = document.getElementById("info");
     const canvas = document.getElementById("frame");
+    // const idZoom = document.querySelector("#frame");
     let cw = (canvas.width = 310),
       cx = cw / 2;
     let ch = (canvas.height = 310),
@@ -210,25 +211,81 @@
     //   return dataJson.find((item) => item.id === id);
     // }
 
-    function zoom(event) {
-      let direction = event.deltaY > 0 ? 1 : -1;
-      if (event.deltaY < 0) {
-        // Zoom in
-        scale *= event.deltaY * -2;
-      } else {
-        // Zoom out
-        scale /= event.deltaY * 2;
-      }
-      // Restrict scale
-      scale = Math.min(Math.max(0.5, scale), 2);
-      const el = document.querySelector("#frame");
-      // Apply scale transform
-      el.style.transform = `scale(${scale})`;
-    }
+    // function zoom(event) {
+    //   let direction = event.deltaY > 0 ? 1 : -1;
+    //   if (event.deltaY < 0) {
+    //     // Zoom in
+    //     scale *= event.deltaY * -2;
+    //   } else {
+    //     // Zoom out
+    //     scale /= event.deltaY * 2;
+    //   }
+    //   // Restrict scale
+    //   scale = Math.min(Math.max(0.5, scale), 2);
+    //   const el = document.querySelector("#frame");
+    //   // Apply scale transform
+    //   el.style.transform = `scale(${scale})`;
+    // }
 
-    window.addEventListener("touchmove", function (e) {
-      document.ontouchmove = zoom;
-    });
+    // window.addEventListener("touchmove", function (e) {
+    //   document.ontouchmove = zoom;
+    // });
+  let imageElementScale = 1;
+
+  let start = {};
+
+  // Calculate distance between two fingers
+  const distance = (event) => {
+    return Math.hypot(event.touches[0].pageX - event.touches[1].pageX, event.touches[0].pageY - event.touches[1].pageY);
+  };
+
+  canvas.addEventListener('touchstart', (event) => {
+    // console.log('touchstart', event);
+    if (event.touches.length === 2) {
+      event.preventDefault(); // Prevent page scroll
+
+      // Calculate where the fingers have started on the X and Y axis
+      start.x = (event.touches[0].pageX + event.touches[1].pageX) / 2;
+      start.y = (event.touches[0].pageY + event.touches[1].pageY) / 2;
+      start.distance = distance(event);
+    }
+  });
+
+  canvas.addEventListener('touchmove', (event) => {
+    // console.log('touchmove', event);
+    if (event.touches.length === 2) {
+      event.preventDefault(); // Prevent page scroll
+
+      // Safari provides event.scale as two fingers move on the screen
+      // For other browsers just calculate the scale manually
+      let scale;
+      if (event.scale) {
+        scale = event.scale;
+      } else {
+        const deltaDistance = distance(event);
+        scale = deltaDistance / start.distance;
+      }
+      imageElementScale = Math.min(Math.max(1, scale), 4);
+
+      // Calculate how much the fingers have moved on the X and Y axis
+      const deltaX = (((event.touches[0].pageX + event.touches[1].pageX) / 2) - start.x) * 2; // x2 for accelarated movement
+      const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y) * 2; // x2 for accelarated movement
+
+      // Transform the image to make it grow and move with fingers
+      const transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
+      canvas.style.transform = transform;
+      canvas.style.WebkitTransform = transform;
+      canvas.style.zIndex = "9999";
+    }
+  });
+
+  canvas.addEventListener('touchend', (event) => {
+    // console.log('touchend', event);
+    // Reset image to it's original format
+    canvas.style.transform = "";
+    canvas.style.WebkitTransform = "";
+    canvas.style.zIndex = "";
+  });
   </script>
 </body>
 
