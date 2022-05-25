@@ -12,6 +12,66 @@ const photo = document.getElementById("photo");
 
 let base64 = null;
 
+import dataJson from "./ar-watch.json" assert { type: "json" };
+const watch = dataJson[0];
+console.log(watch);
+// global vars : canvas, scroll & scale
+let info = document.getElementById("info");
+const canvas = document.getElementById("frame");
+let cw = (canvas.width = 310),
+  cx = cw / 2;
+let ch = (canvas.height = 310),
+  cy = 75;
+const context = canvas.getContext("2d");
+let scrollX = 0;
+let scrollY = 0;
+let scale = 1;
+let scaleFactor = 0.01;
+
+document.getElementById("ref").innerHTML = watch.ref;
+document.getElementById("brand-name").innerHTML =
+  watch.brandname + watch.seriesname + watch.itemname;
+document.getElementById(
+  "case_size"
+).innerHTML = `Case size: ${watch.case_size}`;
+document.getElementById("price").innerHTML = `Y${
+  (watch.tax + 100) / 100
+} (tax inc.)`;
+// modal
+document.getElementById("ref-modal").innerHTML = watch.ref;
+document.getElementById("brand-name-modal").innerHTML =
+  watch.brandname + watch.seriesname + watch.itemname;
+document.getElementById(
+  "case_size-modal"
+).innerHTML = `Case size: ${watch.case_size}`;
+document.getElementById("price-modal").innerHTML = `Y${
+  (watch.tax + 100) / 100
+} (tax inc.)`;
+
+function checkId(id) {
+  return dataJson.find((item) => item.id === id);
+}
+
+function zoom(event) {
+  let direction = event.deltaY > 0 ? 1 : -1;
+  if (event.deltaY < 0) {
+    // Zoom in
+    scale *= event.deltaY * -2;
+  } else {
+    // Zoom out
+    scale /= event.deltaY * 2;
+  }
+  // Restrict scale
+  scale = Math.min(Math.max(0.5, scale), 2);
+  const el = document.querySelector("#frame");
+  // Apply scale transform
+  el.style.transform = `scale(${scale})`;
+}
+
+window.addEventListener("wheel", function (e) {
+  document.onwheel = zoom;
+});
+
 /** フレーム素材一覧 */
 const FRAMES = [
   {

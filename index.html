@@ -25,11 +25,11 @@
         <img src="icon/detail.png" id="show-Detail" class="detailImg" />
       </div>
       <div id="product">
-        <p class="name">SBGA211</p>
-        <p class="product-overview">カメラ映像カメラ映像カメラ映像</p>
+        <p id="ref" class="name"></p>
+        <p id="brand-name" class="product-overview">カメラ映像カメラ映像カメラ映像</p>
         <div class="product-detail">
-          <p class="size">Case size: 41.0mm</p>
-          <p class="tax">Y682,200 (tax inc.)</p>
+          <p id="case_size" class="size">Case size: 41.0mm</p>
+          <p id="price" class="tax">Y682,200 (tax inc.)</p>
         </div>
       </div>
 
@@ -86,11 +86,11 @@
               </div>
               <p class="hr-modal"></p>
               <div id="product-modal">
-                <p class="name-modal">SBGA211</p>
-                <p class="product-overview-modal">カメラ映像カメラ映像カメラ映像</p>
+                <p id="ref-modal" class="name-modal">SBGA211</p>
+                <p id="brand-name-modal" class="product-overview-modal">touchmove</p>
                 <div class="product-detail-modal">
-                  <p class="size-modal">Case size: 41.0mm</p>
-                  <p class="tax-modal">Y682,200 (tax inc.)</p>
+                  <p id="case_size-modal" class="size-modal">Case size: 41.0mm</p>
+                  <p id="price-modal" class="tax-modal">Y682,200 (tax inc.)</p>
                 </div>
               </div>
             </div>
@@ -170,40 +170,10 @@
 
   <script src="util.js" type="text/javascript"></script>
   <script src="html2canvas.min.js"></script>
-  <script src="main.js" type="text/javascript"></script>
-  <script>
-    // global vars : canvas, scroll & scale
-    let info = document.getElementById("info");
-    const canvas = document.getElementById('frame');
-    let cw = canvas.width = 310, cx = cw / 2;
-    let ch = canvas.height = 310, cy = 75;
-    const context = canvas.getContext('2d');
-    let scrollX = 0;
-    let scrollY = 0;
-    let scale = 1;
-    let scaleFactor = 0.01;
+  <script type="module" src="main.js" type="text/javascript"></script>
+  <!-- <script type="module">
     
-    function zoom(event) {
-      let direction = event.deltaY > 0 ? 1 : -1;
-      if (event.deltaY < 0) {
-        // Zoom in
-        scale *= event.deltaY * -2;
-      }
-      else {
-        // Zoom out
-        scale /= event.deltaY * 2;
-      }
-      // Restrict scale
-      scale = Math.min(Math.max(0.5, scale), 2);
-      const el = document.querySelector('#frame');
-      // Apply scale transform
-      el.style.transform = `scale(${scale})`;
-    }
-
-    window.addEventListener("wheel", function(e) {
-      document.onwheel = zoom;
-    });
-  </script>
+  </script> -->
 </body>
 
 </html>
