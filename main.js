@@ -68,8 +68,8 @@ function zoom(event) {
   el.style.transform = `scale(${scale})`;
 }
 
-window.addEventListener("wheel", function (e) {
-  document.onwheel = zoom;
+window.addEventListener("gestureend", function (e) {
+  document.gestureend = zoom;
 });
 
 /** フレーム素材一覧 */
