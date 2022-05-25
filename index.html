@@ -25,7 +25,7 @@
         <img src="icon/detail.png" id="show-Detail" class="detailImg" />
       </div>
       <div id="product">
-        <p id="ref" class="name"></p>
+        <p id="ref" class="name">SNE-123-123</p>
         <p id="brand-name" class="product-overview">カメラ映像カメラ映像カメラ映像</p>
         <div class="product-detail">
           <p id="case_size" class="size">Case size: 41.0mm</p>
@@ -172,9 +172,9 @@
   <script src="html2canvas.min.js"></script>
   <script src="main.js" type="text/javascript"></script>
   <script type="module">
-    import dataJson from "./ar-watch.json" assert { type: "json" };
-    const watch = dataJson[0];
-    console.log(watch);
+    // import dataJson from "./ar-watch.json" assert { type: "json" };
+    // const watch = dataJson[0];
+    // console.log(watch);
     // global vars : canvas, scroll & scale
     let info = document.getElementById("info");
     const canvas = document.getElementById("frame");
@@ -188,27 +188,27 @@
     let scale = 1;
     let scaleFactor = 0.01;
 
-    document.getElementById("ref").innerHTML = watch.ref;
-    document.getElementById("brand-name").innerHTML =
-      watch.brandname + watch.seriesname + watch.itemname;
-    document.getElementById(
-      "case_size"
-    ).innerHTML = `Case size: ${watch.case_size}`;
-    document.getElementById("price").innerHTML = `Y${(watch.tax + 100) / 100
-      } (tax inc.)`;
-    // modal
-    document.getElementById("ref-modal").innerHTML = watch.ref;
-    document.getElementById("brand-name-modal").innerHTML =
-      watch.brandname + watch.seriesname + watch.itemname;
-    document.getElementById(
-      "case_size-modal"
-    ).innerHTML = `Case size: ${watch.case_size}`;
-    document.getElementById("price-modal").innerHTML = `Y${(watch.tax + 100) / 100
-      } (tax inc.)`;
+    // document.getElementById("ref").innerHTML = watch.ref;
+    // document.getElementById("brand-name").innerHTML =
+    //   watch.brandname + watch.seriesname + watch.itemname;
+    // document.getElementById(
+    //   "case_size"
+    // ).innerHTML = `Case size: ${watch.case_size}`;
+    // document.getElementById("price").innerHTML = `Y${(watch.tax + 100) / 100
+    //   } (tax inc.)`;
+    // // modal
+    // document.getElementById("ref-modal").innerHTML = watch.ref;
+    // document.getElementById("brand-name-modal").innerHTML =
+    //   watch.brandname + watch.seriesname + watch.itemname;
+    // document.getElementById(
+    //   "case_size-modal"
+    // ).innerHTML = `Case size: ${watch.case_size}`;
+    // document.getElementById("price-modal").innerHTML = `Y${(watch.tax + 100) / 100
+    //   } (tax inc.)`;
 
-    function checkId(id) {
-      return dataJson.find((item) => item.id === id);
-    }
+    // function checkId(id) {
+    //   return dataJson.find((item) => item.id === id);
+    // }
 
     function zoom(event) {
       let direction = event.deltaY > 0 ? 1 : -1;
