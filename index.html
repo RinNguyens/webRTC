@@ -188,51 +188,80 @@
     let scrollY = 0;
     let scale = 1;
     let scaleFactor = 0.01;
+    let defaultValue = 0;
+    let otherValue = 0;
 
-    // document.getElementById("ref").innerHTML = watch.ref;
-    // document.getElementById("brand-name").innerHTML =
-    //   watch.brandname + watch.seriesname + watch.itemname;
-    // document.getElementById(
-    //   "case_size"
-    // ).innerHTML = `Case size: ${watch.case_size}`;
-    // document.getElementById("price").innerHTML = `Y${(watch.tax + 100) / 100
-    //   } (tax inc.)`;
-    // // modal
-    // document.getElementById("ref-modal").innerHTML = watch.ref;
-    // document.getElementById("brand-name-modal").innerHTML =
-    //   watch.brandname + watch.seriesname + watch.itemname;
-    // document.getElementById(
-    //   "case_size-modal"
-    // ).innerHTML = `Case size: ${watch.case_size}`;
-    // document.getElementById("price-modal").innerHTML = `Y${(watch.tax + 100) / 100
-    //   } (tax inc.)`;
+    let imageElementScale = 1;
 
-    // function checkId(id) {
-    //   return dataJson.find((item) => item.id === id);
-    // }
+    let start = {};
 
-    function zoom(event) {
-      let direction = event.deltaY > 0 ? 1 : -1;
-      if (event.deltaY < 0) {
-        // Zoom in
-        scale *= event.deltaY * -2;
-      } else {
-        // Zoom out
-        scale /= event.deltaY * 2;
+    // Calculate distance between two fingers
+    const distance = (event) => {
+      return Math.hypot(event.touches[0].pageX, event.touches[0].pageY);
+    };
+
+    canvas.addEventListener('touchstart', (event) => {
+      // console.log('touchstart', event);
+      if (event.touches.length === 1) {
+        event.preventDefault(); // Prevent page scroll
+
+        // Calculate where the fingers have started on the X and Y axis
+        start.x = event.touches[0].pageX;
+        start.y = event.touches[0].pageY;
+        start.distance = distance(event);
       }
-      // Restrict scale
-      scale = Math.min(Math.max(0.5, scale), 2);
-      const el = document.querySelector("#frame");
-      // Apply scale transform
-      el.style.transform = `scale(${scale})`;
-    }
-
-    window.addEventListener("wheel", function (e) {
-      document.onwheel = zoom;
     });
 
+    canvas.addEventListener('touchmove', (event) => {
+      // console.log('touchmove', event);
+      if (event.touches.length === 1) {
+        event.preventDefault(); // Prevent page scroll
 
-    window.dispatchEvent(new Event('touchmove'));
+        // Safari provides event.scale as two fingers move on the screen
+        // For other browsers just calculate the scale manually
+        if (event.scale) {
+          scale = event.scale;
+        } else {
+          const deltaDistance = distance(event);
+          scale = deltaDistance / start.distance;
+        }
+        imageElementScale = Math.min(Math.max(1, scale), 4);
+        // Calculate how much the fingers have moved on the X and Y axis
+        const deltaX = ((event.touches[0].pageX)) * 1; // x2 for accelarated movement
+        const deltaY = ((event.touches[0].pageY)) * 1; // x2 for accelarated movement
+        getDefaultDetailtX(deltaX);
+        console.log(defaultValue);
+        console.log(deltaX, 'deltaY');
+        // Transform the image to make it grow and move with fingers
+        // const transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
+        if (deltaY < defaultValue) {
+          // Zoom in
+          scale *= deltaY * -2;
+          console.log('Zoom in');
+        } else {
+          // Zoom out
+          console.log('Zoom out');
+
+          scale /= deltaY * -2;
+        }
+
+        // Restrict scale
+        // scale = Math.min(Math.max(0.5, scale), 2);
+        const el = document.querySelector("#frame");
+        el.style.transform = `scale(${scale})`;
+        el.style.WebkitTransform = `scale(${scale})`;
+        el.style.zIndex = "9999";
+      }
+    });
+
+    function getDefaultDetailtX(deltaXValue) {
+      if (deltaXValue > 0 && defaultValue <= 0) {
+        return defaultValue = deltaXValue;
+      }
+
+      return otherValue = deltaXValue;
+    }
+
 
 
   </script>
