@@ -229,7 +229,7 @@
         // Calculate how much the fingers have moved on the X and Y axis
         const deltaX = ((event.touches[0].pageX)) * 1; // x2 for accelarated movement
         const deltaY = ((event.touches[0].pageY)) * 1; // x2 for accelarated movement
-        getDefaultDetailtX(deltaX);
+        getDefaultDetailtX(deltaY);
         console.log(defaultValue);
         console.log(deltaX, 'deltaY');
         // Transform the image to make it grow and move with fingers
@@ -244,6 +244,7 @@
           scale = scale + 0.2;
         }
 
+        console.log(scale);
         // Restrict scale
         // scale = Math.min(Math.max(0.5, scale), 2);
         const el = document.querySelector("#frame");
