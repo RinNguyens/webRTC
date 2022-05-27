@@ -208,7 +208,7 @@ async function drawFrameCopy(path, obj) {
   const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
-  
+
   frameResult.width = obj.width - 120;
   frameResult.height = obj.height - 100;
   
@@ -235,8 +235,6 @@ async function drawFrameCopy(path, obj) {
  * @return {void}
  **/
 async function onShutter() {
-  console.log(FRAME.getBoundingClientRect(), 'asdas')
-
   getWeight = {
     height: FRAME.getBoundingClientRect().height,
     width: FRAME.getBoundingClientRect().width,

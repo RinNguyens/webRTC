@@ -202,7 +202,6 @@
     });
 
     canvas.addEventListener('touchmove', (event) => {
-      // console.log('touchmove', event);
       if (event.touches.length === 1) {
         event.preventDefault(); // Prevent page scroll
         // Safari provides event.scale as two fingers move on the screen
@@ -221,12 +220,10 @@
         // const scale 
         if (deltaY < defaultValue) {
           // Zoom in
-          console.log('Zoom in');
           scale = scale - 0.2;
 
         } else {
           // Zoom out
-          console.log('Zoom out');
           scale = scale + 0.2;;
         }
 
