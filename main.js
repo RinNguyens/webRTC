@@ -241,7 +241,9 @@ async function onShutter() {
   if (getWeight.height > startFrame.height) {
     frameResult.style.top = '50%';
     frameResult.style.left = '30%';
-    console.log(11111111);
+  } else if (getWeight.height < 250) {
+    frameResult.style.top = '53%';
+    frameResult.style.left = '33.5%';
   }
 
 
