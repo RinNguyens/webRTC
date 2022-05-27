@@ -93,7 +93,7 @@ h1 {
   z-index: 15;
   color: #ffffff;
   top: 10%;
-  margin: 20px 20px;
+  margin: 0px 20px;
 }
 
 .name {
@@ -431,7 +431,7 @@ h1 {
   z-index: 15;
   color: #ffffff;
   top: 10%;
-  margin: 20px 0px;
+  margin: 0px 0px;
   padding: 20px;
 }
 
