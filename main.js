@@ -247,8 +247,8 @@ async function onShutter() {
   }
   
   if (getWeight.width <= 330) {
-    frameResult.style.top = '53%';
-    frameResult.style.left = '30%';
+    frameResult.style.top = '54%';
+    frameResult.style.left = '32%';
   }
 
   await drawFrameCopy(FRAMES[0].large, getWeight);
