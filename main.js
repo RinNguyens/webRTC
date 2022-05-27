@@ -208,7 +208,6 @@ async function drawFrameCopy(path, obj) {
   const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
-
   if (obj.width > startFrame.width) {
     frameResult.width = obj.width - 140;
     frameResult.height = obj.height - 120;
@@ -239,19 +238,20 @@ async function onShutter() {
     height: FRAME.getBoundingClientRect().height,
     width: FRAME.getBoundingClientRect().width,
   }
-  await drawFrameCopy(FRAMES[0].large, getWeight);
 
   if (getWeight.width > startFrame.width) {
     frameResult.style.top = '49%';
     frameResult.style.left = '29%';
   }
   
-  if (getWeight.width <= 280) {
-    frameResult.style.top = '65%';
+  if (getWeight.width <= 290) {
+    frameResult.style.top = '80%';
     frameResult.style.left = '35%';
   }
 
+  await drawFrameCopy(FRAMES[0].large, getWeight);
 
+ 
   const ctx = STILL.getContext("2d");
 
   ctx.clearRect(0, 0, STILL.width, STILL.height);
