@@ -11,6 +11,7 @@ const SE = document.querySelector("#se");
 const photo = document.getElementById("photo");
 
 let getWeight = {};
+let startFrame = {};
 
 let base64 = null;
 
@@ -43,6 +44,7 @@ window.onload = () => {
   syncCamera();
   VIDEO.play();
 
+  startFrame = FRAME.getBoundingClientRect();
   //-----------------------------
   // フレーム初期化
   //-----------------------------
@@ -235,6 +237,12 @@ async function onShutter() {
     width: FRAME.getBoundingClientRect().width,
   }
   await drawFrameCopy(FRAMES[0].large, getWeight);
+
+  if (getWeight.height > startFrame.height) {
+    frameResult.style.top = '50%';
+    frameResult.style.left = '30%';
+    console.log(11111111);
+  }
 
 
   const ctx = STILL.getContext("2d");
