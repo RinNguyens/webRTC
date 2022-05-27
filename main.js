@@ -28,8 +28,8 @@ const CONSTRAINTS = {
   video: {
     width: 1920,
     height: 1080,
-    // facingMode: "user" // フロントカメラを利用する
-    facingMode: { exact: "environment" }, // リアカメラを利用する場合
+    facingMode: "user" // フロントカメラを利用する
+    // facingMode: { exact: "environment" }, // リアカメラを利用する場合
   },
 };
 
@@ -203,14 +203,12 @@ function drawFrame(path) {
 }
 
 async function drawFrameCopy(path, obj) {
-  console.log(obj, 'obg')
+  console.log(obj, 'obj')
   const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
   frameResult.width = obj.width - 120;
-  frameResult.height = obj.height - 120;
-
-  console.log(frameResult.width, frameResult.height, '12313');
+  frameResult.height = obj.height - 100;
 
   image.onload = () => {
     const ctx = FRAMERESULT.getContext("2d");
