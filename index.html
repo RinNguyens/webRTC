@@ -222,12 +222,12 @@
         if (deltaY < defaultValue) {
           // Zoom in
           console.log('Zoom in');
-          scale = scale - 0.1
+          scale = scale - 0.2;
 
         } else {
           // Zoom out
           console.log('Zoom out');
-          scale = scale + 0.1;
+          scale = scale + 0.2;;
         }
 
         imageElementScale = Math.min(Math.max(0.5, scale), 4);

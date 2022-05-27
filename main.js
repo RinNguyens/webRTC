@@ -189,8 +189,6 @@ function setFrameList() {
 function drawFrame(path) {
   const modal = "#dialog-nowloading";
   const image = new Image();
-  frame.width = 310;
-  frame.height = 310;
   image.src = path;
   image.onload = () => {
     const ctx = FRAME.getContext("2d");
