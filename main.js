@@ -247,7 +247,7 @@ async function onShutter() {
   }
   
   if (getWeight.width <= 280) {
-    frameResult.style.top = '60%';
+    frameResult.style.top = '65%';
     frameResult.style.left = '35%';
   }
 
