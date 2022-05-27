@@ -189,6 +189,8 @@ function setFrameList() {
 function drawFrame(path) {
   const modal = "#dialog-nowloading";
   const image = new Image();
+  frame.width = 310;
+  frame.height = 310;
   image.src = path;
   image.onload = () => {
     const ctx = FRAME.getContext("2d");
@@ -202,12 +204,15 @@ function drawFrame(path) {
   dialogShow(modal);
 }
 
-function drawFrameCopy(path, obj) {
+async function drawFrameCopy(path, obj) {
+  console.log(obj, 'obg')
   const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
   frameResult.width = obj.width - 120;
   frameResult.height = obj.height - 120;
+
+  console.log(frameResult.width, frameResult.height, '12313');
 
   image.onload = () => {
     const ctx = FRAMERESULT.getContext("2d");
@@ -226,14 +231,14 @@ function drawFrameCopy(path, obj) {
  *
  * @return {void}
  **/
-function onShutter() {
+async function onShutter() {
   console.log(FRAME.getBoundingClientRect(), 'asdas')
 
   getWeight = {
     height: FRAME.getBoundingClientRect().height,
     width: FRAME.getBoundingClientRect().width,
   }
-  drawFrameCopy(FRAMES[0].large, getWeight);
+  await drawFrameCopy(FRAMES[0].large, getWeight);
 
 
   const ctx = STILL.getContext("2d");
