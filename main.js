@@ -205,10 +205,10 @@ function drawFrame(path) {
 }
 
 async function drawFrameCopy(path, obj) {
-  console.log(obj, 'obj')
   const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
+  
   frameResult.width = obj.width - 120;
   frameResult.height = obj.height - 100;
   
@@ -216,7 +216,6 @@ async function drawFrameCopy(path, obj) {
     frameResult.width = obj.width - 140;
     frameResult.height = obj.height - 120;
   }
-  
 
   image.onload = () => {
     const ctx = FRAMERESULT.getContext("2d");
@@ -250,7 +249,7 @@ async function onShutter() {
   }
   
   if (getWeight.width <= 280) {
-    frameResult.style.top = '55%';
+    frameResult.style.top = '56%';
     frameResult.style.left = '35%';
   }
 
