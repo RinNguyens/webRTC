@@ -243,7 +243,7 @@ async function onShutter() {
     frameResult.style.left = '30%';
   } else if (getWeight.height <= 250) {
     frameResult.style.top = '55%';
-    frameResult.style.left = '34%';
+    frameResult.style.left = '35%';
   }
 
 
