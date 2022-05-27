@@ -239,14 +239,16 @@ async function onShutter() {
     width: FRAME.getBoundingClientRect().width,
   }
 
+  console.log(getWeight.width , startFrame.width, 'getWeight.width > startFrame.width')
+
   if (getWeight.width > startFrame.width) {
     frameResult.style.top = '49%';
     frameResult.style.left = '29%';
   }
   
-  if (getWeight.width <= 290) {
-    frameResult.style.top = '80%';
-    frameResult.style.left = '35%';
+  if (getWeight.width <= 310) {
+    frameResult.style.top = '51%';
+    frameResult.style.left = '30%';
   }
 
   await drawFrameCopy(FRAMES[0].large, getWeight);
