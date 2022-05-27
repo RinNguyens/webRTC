@@ -211,6 +211,12 @@ async function drawFrameCopy(path, obj) {
   image.src = path;
   frameResult.width = obj.width - 120;
   frameResult.height = obj.height - 100;
+  
+  if (obj.width > startFrame.width) {
+    frameResult.width = obj.width - 140;
+    frameResult.height = obj.height - 120;
+  }
+  
 
   image.onload = () => {
     const ctx = FRAMERESULT.getContext("2d");
@@ -238,12 +244,12 @@ async function onShutter() {
   }
   await drawFrameCopy(FRAMES[0].large, getWeight);
 
-  if (getWeight.height > startFrame.height) {
-    frameResult.style.top = '50%';
-    frameResult.style.left = '30%';
+  if (getWeight.width > startFrame.width) {
+    frameResult.style.top = '49%';
+    frameResult.style.left = '29%';
   }
   
-  if (getWeight.height <= 250) {
+  if (getWeight.width <= 280) {
     frameResult.style.top = '55%';
     frameResult.style.left = '35%';
   }
