@@ -42,7 +42,7 @@
           <img src="image/detailWatch.png" class="notiWatch" />
         </div>
         <div>
-          <canvas id="frame" width="510" height="510"></canvas>
+          <canvas id="frame"></canvas>
         </div>
       </div>
 
@@ -96,7 +96,7 @@
             </div>
             <div id="shadowModal"></div>
             <div>
-              <canvas id="frameResult" width="190" height="190"></canvas>
+              <canvas id="frameResult" ></canvas>
             </div>
             <img id="photo" />
           </div>
@@ -118,7 +118,7 @@
               </div>
             </div>
             <div class="scale item">
-              <img src="icon/genta.png" class="item-img" />
+              <img src="icon/pinchin.png" class="item-img" />
               <div class="base">
                 <h2>SCALE</h2>
                 <div class="base-text">
@@ -128,7 +128,7 @@
               </div>
             </div>
             <div class="camera item">
-              <img src="icon/pinchin.png" class="item-img" />
+              <img src="icon/genta.png" class="item-img" />
               <div class="base">
                 <h2>CAMERA</h2>
                 <div class="base-text">
@@ -167,10 +167,6 @@
     </audio>
 
   </div>
-
-  <script src="util.js" type="text/javascript"></script>
-  <script src="html2canvas.min.js"></script>
-  <script src="main.js" type="text/javascript"></script>
   <script type="module">
     // import dataJson from "./ar-watch.json" assert { type: "json" };
     // const watch = dataJson[0];
@@ -179,11 +175,8 @@
     let info = document.getElementById("info");
     const canvas = document.getElementById("frame");
     // const idZoom = document.querySelector("#frame");
-    let cw = (canvas.width = 310),
-      cx = cw / 2;
-    let ch = (canvas.height = 310),
-      cy = 75;
-    const context = canvas.getContext("2d");
+    let cw = (canvas.width = 310);
+    let ch = (canvas.height = 310);
     let scrollX = 0;
     let scrollY = 0;
     let scale = 1;
@@ -229,22 +222,20 @@
         // Calculate how much the fingers have moved on the X and Y axis
         const deltaX = ((event.touches[0].pageX)) * 1; // x2 for accelarated movement
         const deltaY = ((event.touches[0].pageY)) * 1; // x2 for accelarated movement
-        getDefaultDetailtX(deltaY);
-        console.log(defaultValue);
-        console.log(deltaX, 'deltaY');
+        getDefaultDetailtY(deltaY);
         // Transform the image to make it grow and move with fingers
         // const transform = `translate3d(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
         if (deltaY < defaultValue) {
           // Zoom in
+          console.log('Zoom in');
           scale = scale - 0.2
+
         } else {
           // Zoom out
           console.log('Zoom out');
-
           scale = scale + 0.2;
         }
 
-        console.log(scale);
         // Restrict scale
         // scale = Math.min(Math.max(0.5, scale), 2);
         const el = document.querySelector("#frame");
@@ -254,17 +245,18 @@
       }
     });
 
-    function getDefaultDetailtX(deltaXValue) {
+    function getDefaultDetailtY(deltaXValue) {
       if (deltaXValue > 0 && defaultValue <= 0) {
         return defaultValue = deltaXValue;
       }
 
       return otherValue = deltaXValue;
     }
-
-
-
   </script>
+  <script src="util.js" type="text/javascript"></script>
+  <script src="html2canvas.min.js"></script>
+  <script src="main.js" type="text/javascript"></script>
+  
 </body>
 
 </html>

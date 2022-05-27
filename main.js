@@ -10,6 +10,8 @@ const STILL = document.querySelector("#still"); // <canvas>
 const SE = document.querySelector("#se");
 const photo = document.getElementById("photo");
 
+let getWeight = {};
+
 let base64 = null;
 
 /** フレーム素材一覧 */
@@ -45,7 +47,6 @@ window.onload = () => {
   // フレーム初期化
   //-----------------------------
   drawFrame(FRAMES[0].large); // 初期フレームを表示
-  drawFrameCopy(FRAMES[0].large);
   setFrameList(); // 切り替え用のフレーム一覧を表示
 
   //-----------------------------
@@ -201,10 +202,13 @@ function drawFrame(path) {
   dialogShow(modal);
 }
 
-function drawFrameCopy(path) {
+function drawFrameCopy(path, obj) {
   const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
+  frameResult.width = obj.width - 120;
+  frameResult.height = obj.height - 120;
+
   image.onload = () => {
     const ctx = FRAMERESULT.getContext("2d");
     ctx.clearRect(0, 0, frameResult.width, frameResult.height);
@@ -223,6 +227,15 @@ function drawFrameCopy(path) {
  * @return {void}
  **/
 function onShutter() {
+  console.log(FRAME.getBoundingClientRect(), 'asdas')
+
+  getWeight = {
+    height: FRAME.getBoundingClientRect().height,
+    width: FRAME.getBoundingClientRect().width,
+  }
+  drawFrameCopy(FRAMES[0].large, getWeight);
+
+
   const ctx = STILL.getContext("2d");
 
   ctx.clearRect(0, 0, STILL.width, STILL.height);
