@@ -26,7 +26,7 @@
       </div>
       <div id="product">
         <p id="ref" class="name">SNE-123-123</p>
-        <p id="brand-name" class="product-overview">カメラ映像カメラ映像カメラ映像</p>
+        <p id="product-overview" class="product-overview">カメラ映像カメラ映像カメラ映像</p>
         <div class="product-detail">
           <p id="case_size" class="size">Case size: 41.0mm</p>
           <p id="price" class="tax">Y682,200 (tax inc.)</p>
@@ -142,7 +142,7 @@
             <p><a href="tel:0522642681">
                 <img src="image/phone.png" class="phone" />
               </a></p>
-            <p>
+            <p id="visit_reservation">
               <img src="image/home.png" class="home" />
             </p>
 
@@ -167,84 +167,7 @@
     </audio>
 
   </div>
-  <script type="module">
-    // import dataJson from "./ar-watch.json" assert { type: "json" };
-    // const watch = dataJson[0];
-    // console.log(watch);
-    // global vars : canvas, scroll & scale
-    let info = document.getElementById("info");
-    const canvas = document.getElementById("frame");
-    // const idZoom = document.querySelector("#frame");
-    canvas.width = 310;
-    canvas.height = 310;
-    let scale = 1;
-    let defaultValue = 0;
-    let otherValue = 0;
-
-    let imageElementScale = 1;
-
-    let start = {};
-
-    // Calculate distance between two fingers
-    const distance = (event) => {
-      return Math.hypot(event.touches[0].pageX, event.touches[0].pageY);
-    };
-
-    canvas.addEventListener('touchstart', (event) => {
-      if (event.touches.length === 1) {
-        event.preventDefault(); // Prevent page scroll
-
-        // Calculate where the fingers have started on the X and Y axis
-        start.x = event.touches[0].pageX;
-        start.y = event.touches[0].pageY;
-        start.distance = distance(event);
-      }
-    });
-
-    canvas.addEventListener('touchmove', (event) => {
-      if (event.touches.length === 1) {
-        event.preventDefault(); // Prevent page scroll
-        // Safari provides event.scale as two fingers move on the screen
-        // For other browsers just calculate the scale manually
-        if (event.scale) {
-          scale = event.scale;
-        } else {
-          const deltaDistance = distance(event);
-          scale = deltaDistance / start.distance;
-        }
-        // Calculate how much the fingers have moved on the X and Y axis
-        const deltaX = ((event.touches[0].pageX)) * 1; // x2 for accelarated movement
-        const deltaY = ((event.touches[0].pageY)) * 1; // x2 for accelarated movement
-        getDefaultDetailtY(deltaY);
-        // Transform the image to make it grow and move with fingers
-        // const scale 
-        if (deltaY < defaultValue) {
-          // Zoom in
-          scale = scale - 0.2;
-
-        } else {
-          // Zoom out
-          scale = scale + 0.2;;
-        }
-
-        imageElementScale = Math.min(Math.max(0.5, scale), 4);
-        // Restrict scale
-        // scale = Math.min(Math.max(0.5, scale), 2);
-        const el = document.querySelector("#frame");
-        el.style.transform = `scale(${imageElementScale})`;
-        el.style.WebkitTransform = `scale(${imageElementScale})`;
-        el.style.zIndex = "9999";
-      }
-    });
-
-    function getDefaultDetailtY(deltaXValue) {
-      if (deltaXValue > 0 && defaultValue <= 0) {
-        return defaultValue = deltaXValue;
-      }
-
-      return otherValue = deltaXValue;
-    }
-  </script>
+  <script type="module" src="getJson.js"></script>
   <script src="util.js" type="text/javascript"></script>
   <script src="html2canvas.min.js"></script>
   <script src="main.js" type="text/javascript"></script>
