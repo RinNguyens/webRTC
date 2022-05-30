@@ -65,7 +65,7 @@ imageElement.addEventListener("touchmove", (event) => {
     }
 
     scale = Number.isNaN(scale) ? 1.0 : scale;
-    scale = Math.max(scale, 0.5);
+    scale = Math.max(scale, 0.7);
     scale = Math.min(scale, 2.0);
 
     // Transform the image to make it grow and move with fingers
