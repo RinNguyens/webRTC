@@ -134,13 +134,12 @@ imageElement.addEventListener("touchstart", (event) => {
     // Calculate where the fingers have started on the X and Y axis
     start.x = (event.touches[0].pageX + event.touches[1].pageX) / 2;
     start.y = (event.touches[0].pageY + event.touches[1].pageY) / 2;
-    start.distance = distance(event);
+    start.distance = distanceScale(event);
   }
 });
 
 imageElement.addEventListener("touchmove", (event) => {
-  console.log(event);
-  // console.log('touchmove', event);
+
   if (event.touches.length === 2) {
     event.preventDefault(); // Prevent page scroll
 
@@ -148,26 +147,25 @@ imageElement.addEventListener("touchmove", (event) => {
     // For other browsers just calculate the scale manually
     let scale = 1;
  
-    const startDistance = distanceScale(event);
-    const currentDistance = distanceScale(touchPosition(event));
-    scale = (currentDistance / startDistance) * tempScale;
+    
+    if (event.scale) {
+      scale = event.scale;
+    } else {
+      const deltaDistance = distanceScale(event);
+      scale = deltaDistance / start.distance;
+    }
+
     scale = Number.isNaN(scale) ? 1.0 : scale;
     scale = Math.max(scale, 0.5);
     scale = Math.min(scale, 2.0);
 
-    // if (event.scale) {
-    //   scale = event.scale;
-    // } else {
-    //   const deltaDistance = distance(event);
-    //   scale = deltaDistance / start.distance;
-    // }
-    // imageElementScale = Math.min(Math.max(0.6, scale), 2);
+    imageElementScale = Math.min(Math.max(0.6, scale), 2);
 
-    // // Calculate how much the fingers have moved on the X and Y axis
-    // const deltaX =
-    //   ((event.touches[0].pageX + event.touches[1].pageX) / 2 - start.x) * 2; // x2 for accelarated movement
-    // const deltaY =
-    //   ((event.touches[0].pageY + event.touches[1].pageY) / 2 - start.y) * 2; // x2 for accelarated movement
+    // Calculate how much the fingers have moved on the X and Y axis
+    const deltaX =
+      ((event.touches[0].pageX + event.touches[1].pageX) / 2 - start.x) * 2; // x2 for accelarated movement
+    const deltaY =
+      ((event.touches[0].pageY + event.touches[1].pageY) / 2 - start.y) * 2; // x2 for accelarated movement
 
     // Transform the image to make it grow and move with fingers
     // const transform = `scale(${imageElementScale})`;
@@ -175,8 +173,8 @@ imageElement.addEventListener("touchmove", (event) => {
     // imageElement.style.WebkitTransform = transform;
     // imageElement.style.zIndex = "9999";
     const el = document.querySelector("#frame");
-    el.style.transform = `scale(${scale})`;
-    el.style.WebkitTransform = `scale(${scale})`;
+    el.style.transform = `scale(${imageElementScale})`;
+    el.style.WebkitTransform = `scale(${imageElementScale})`;
     el.style.zIndex = "9999";
   }
 });
