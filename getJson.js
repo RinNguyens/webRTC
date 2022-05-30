@@ -1,6 +1,6 @@
-import dataJson from "./ar-watch.json" assert { type: "json" };
-const watch = dataJson[0];
-console.log(watch);
+// import dataJson from "./ar-watch.json" assert { type: "json" };
+// const watch = dataJson[0];
+// console.log(watch);
 // global vars : canvas, scroll & scale
 let info = document.getElementById("info");
 const canvas = document.getElementById("frame");
