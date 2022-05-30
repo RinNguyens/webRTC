@@ -78,7 +78,7 @@ window.onload = () => {
   document.querySelector("#show-Detail").addEventListener("click", () => {
     VIDEO.pause();
     changeWidth("#dialog-result", "auto");
-    showTag("#content-detail");
+    showTag("#content-detail", "#dialog-result");
     dialogHideImgResult("#wrapImg", "#download");
     setTimeout(() => {
       dialogShow("#dialog-result");
@@ -257,6 +257,11 @@ async function onShutter() {
     frameResult.style.left = '14%';
   }
 
+  if (getWeight.width / startFrame.width >= 1.2 && getWeight.width / startFrame.width <= 1.4) {
+    frameResult.style.top = '41%';
+    frameResult.style.left = '13%';
+  }
+
   await drawFrameCopy(FRAMES[0].large, getWeight);
 
  
@@ -312,9 +317,13 @@ function dialogShowImgResult(id1, id2) {
 function hiddenTag(id) {
   document.querySelector(id).style.display = "none";
 }
-function showTag(id) {
-  document.querySelector(id).style.display = "inline-grid";
+function showTag(id1, id2) {
+  document.querySelector(id1).style.display = "inline-grid";
+  document.querySelector(id2).style.border = "none";
+  document.querySelector(id2).style.padding = "0";
 }
 function changeWidth(id, value) {
   document.querySelector(id).style.height = value;
+  document.querySelector(id).style.border = "5px solid #ebd8b9";
+  document.querySelector(id).style.padding = "35px";
 }
