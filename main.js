@@ -237,25 +237,65 @@ async function onShutter() {
   getWeight = {
     height: FRAME.getBoundingClientRect().height,
     width: FRAME.getBoundingClientRect().width,
+  };
+
+  console.log(
+    getWeight.width,
+    startFrame.width,
+    "getWeight.width > startFrame.width"
+  );
+
+  const scaleTotal = parseFloat(getWeight.width / startFrame.width).toFixed(1);
+
+  switch (scaleTotal) {
+    case scaleTotal === 1.1:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    case scaleTotal === 1.2:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    case scaleTotal === 1.3:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    case scaleTotal === 1.4:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    case scaleTotal === 1.5:
+      frameResult.style.top = "44%";
+      frameResult.style.left = "14%";
+
+    case scaleTotal === 1.6:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    case scaleTotal === 1.7:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    case scaleTotal === 1.8:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    case scaleTotal === 1.9:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+    case scaleTotal === 2:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+
+    default:
+      break;
   }
 
-  console.log(getWeight.width , startFrame.width, 'getWeight.width > startFrame.width')
-  
-
-  if (getWeight.width > startFrame.width) {
-    frameResult.style.top = '49%';
-    frameResult.style.left = '29%';
-  }
-  
   if (getWeight.width <= 330) {
-    frameResult.style.top = '54%';
-    frameResult.style.left = '35%';
+    frameResult.style.top = "54%";
+    frameResult.style.left = "35%";
   }
 
-  if (getWeight.width / startFrame.width >= 1.5) {
-    frameResult.style.top = '44%';
-    frameResult.style.left = '14%';
-  }
 
   // if (getWeight.width / startFrame.width >= 1.2 && getWeight.width / startFrame.width <= 1.4) {
   //   frameResult.style.top = '50%';
@@ -264,7 +304,6 @@ async function onShutter() {
 
   await drawFrameCopy(FRAMES[0].large, getWeight);
 
- 
   const ctx = STILL.getContext("2d");
 
   ctx.clearRect(0, 0, STILL.width, STILL.height);
