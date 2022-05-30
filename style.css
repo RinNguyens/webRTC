@@ -31,6 +31,7 @@ h1 {
 }
 
 #frame {
+  touch-action: none;
   -webkit-transition: transform 1.05s ease-in-out;
   -moz-transition:transform 1.05s ease-in-out;
   -ms-transition:transform 1.05s ease-in-out;
