@@ -9,7 +9,7 @@ const RESULTIMG = document.querySelector("#resultImg");
 const STILL = document.querySelector("#still"); // <canvas>
 const SE = document.querySelector("#se");
 const photo = document.getElementById("photo");
-
+let scaleTotal = 1;
 let getWeight = {};
 let startFrame = {};
 
@@ -245,7 +245,7 @@ async function onShutter() {
     "getWeight.width > startFrame.width"
   );
 
-  const scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
+  scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
   console.log(scaleTotal, 'scaleTotal')
   switch (scaleTotal) {
     case 1.1:
@@ -264,7 +264,7 @@ async function onShutter() {
     case 1.3:
       frameResult.style.top = "46%";
       frameResult.style.left = "29%";
-      console.log(1.3)
+      console.log(1.3);
       break;
 
 
