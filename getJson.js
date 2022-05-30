@@ -136,7 +136,7 @@ imageElement.addEventListener("touchmove", (event) => {
       const deltaDistance = distance(event);
       scale = deltaDistance / start.distance;
     }
-    imageElementScale = Math.min(Math.max(1, scale), 4);
+    imageElementScale = Math.min(Math.max(0.6, scale), 2);
 
     // Calculate how much the fingers have moved on the X and Y axis
     const deltaX =
