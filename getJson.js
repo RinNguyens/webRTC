@@ -122,7 +122,7 @@ const imageElement = document.getElementById("frame");
   });
 
   imageElement.addEventListener('touchmove', (event) => {
-    console.log(2222)
+    console.log(event)
     // console.log('touchmove', event);
     if (event.touches.length === 2) {
       event.preventDefault(); // Prevent page scroll
