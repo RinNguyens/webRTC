@@ -34,7 +34,7 @@ h1 {
 }
 
 #frame {
-  z-index: 106;
+  z-index: 110;
   -webkit-transition: transform 1.05s ease-in-out;
   -moz-transition:transform 1.05s ease-in-out;
   -ms-transition:transform 1.05s ease-in-out;
