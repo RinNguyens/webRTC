@@ -29,7 +29,7 @@ canvas.addEventListener("touchstart", (event) => {
     start.y = event.touches[0].pageY;
     start.distance = distance(event);
   }
-});
+}, false);
 
 canvas.addEventListener("touchmove", (event) => {
   if (event.touches.length === 1) {
@@ -64,7 +64,7 @@ canvas.addEventListener("touchmove", (event) => {
     el.style.WebkitTransform = `scale(${imageElementScale})`;
     el.style.zIndex = "9999";
   }
-});
+}, false);
 
 function getDefaultDetailtY(deltaXValue) {
   if (deltaXValue > 0 && defaultValue <= 0) {
