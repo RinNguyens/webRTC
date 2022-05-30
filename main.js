@@ -245,47 +245,83 @@ async function onShutter() {
     "getWeight.width > startFrame.width"
   );
 
-  const scaleTotal = parseFloat(getWeight.width / startFrame.width).toFixed(1);
-
+  const scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
+  console.log(scaleTotal, 'scaleTotal')
   switch (scaleTotal) {
-    case scaleTotal === 1.1:
+    case 1.1:
       frameResult.style.top = "50%";
       frameResult.style.left = "32%";
+      console.log(1.1)
+      break;
 
-    case scaleTotal === 1.2:
+    case 1.2:
       frameResult.style.top = "49%";
       frameResult.style.left = "32%";
+      console.log(1.2)
+      break;
 
-    case scaleTotal === 1.3:
+
+    case 1.3:
       frameResult.style.top = "46%";
       frameResult.style.left = "29%";
+      console.log(1.3)
+      break;
 
-    case scaleTotal === 1.4:
+
+    case 1.4:
       frameResult.style.top = "44%";
       frameResult.style.left = "29%";
+      console.log(1.4)
 
-    case scaleTotal === 1.5:
+      break;
+
+
+    case 1.5:
       frameResult.style.top = "44%";
       frameResult.style.left = "14%";
+      console.log(1.5)
 
-    case scaleTotal === 1.6:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "29%";
+      break;
 
-    case scaleTotal === 1.7:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "29%";
 
-    case scaleTotal === 1.8:
+    case 1.6:
       frameResult.style.top = "49%";
       frameResult.style.left = "29%";
+      console.log(1.6)
 
-    case scaleTotal === 1.9:
+      break;
+
+
+    case 1.7:
       frameResult.style.top = "49%";
       frameResult.style.left = "29%";
-    case scaleTotal === 2:
+      console.log(1.7)
+
+      break;
+
+
+    case 1.8:
       frameResult.style.top = "49%";
       frameResult.style.left = "29%";
+      console.log(1.8)
+
+      break;
+
+
+    case 1.9:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+      console.log(1.9)
+
+      break;
+
+    case 2:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "29%";
+      console.log(2)
+
+      break;
+
 
     default:
       break;
