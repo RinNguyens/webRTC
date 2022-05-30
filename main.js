@@ -239,39 +239,29 @@ async function onShutter() {
     width: FRAME.getBoundingClientRect().width,
   };
 
-  console.log(
-    getWeight.width,
-    startFrame.width,
-    "getWeight.width > startFrame.width"
-  );
 
   scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
-  console.log(scaleTotal, 'scaleTotal')
   switch (scaleTotal) {
     case 1.1:
       frameResult.style.top = "50%";
       frameResult.style.left = "32%";
-      console.log(1.1)
       break;
 
     case 1.2:
       frameResult.style.top = "49%";
       frameResult.style.left = "32%";
-      console.log(1.2)
       break;
 
 
     case 1.3:
       frameResult.style.top = "46%";
       frameResult.style.left = "29%";
-      console.log(1.3);
       break;
 
 
     case 1.4:
       frameResult.style.top = "44%";
       frameResult.style.left = "29%";
-      console.log(1.4)
 
       break;
 
@@ -279,51 +269,6 @@ async function onShutter() {
     case 1.5:
       frameResult.style.top = "42%";
       frameResult.style.left = "29%";
-      console.log(1.5)
-
-      break;
-
-
-    case 1.6:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "29%";
-      console.log(1.6)
-
-      break;
-
-
-    case 1.7:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "29%";
-      console.log(1.7)
-
-      break;
-
-
-    case 1.8:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "29%";
-      console.log(1.8)
-
-      break;
-
-
-    case 1.9:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "29%";
-      console.log(1.9)
-
-      break;
-
-    case 2:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "29%";
-      console.log(2)
-
-      break;
-
-
-    default:
       break;
   }
 

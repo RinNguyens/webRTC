@@ -41,7 +41,7 @@ const distanceScale = (event) => {
 
 imageElement.addEventListener("touchstart", (event) => {
   const el = document.querySelector("#frame");
-    el.style.transform = `scale(${1.5})`;
+    el.style.transform = `scale(${0.8})`;
   if (event.touches.length === 2) {
     event.preventDefault(); // Prevent page scroll
 
@@ -68,7 +68,7 @@ imageElement.addEventListener("touchmove", (event) => {
 
     scale = Number.isNaN(scale) ? 1.0 : scale;
     scale = Math.max(scale, 0.7);
-    scale = Math.min(scale, 2.0);
+    scale = Math.min(scale, 1.5);
 
     // Transform the image to make it grow and move with fingers
     const el = document.querySelector("#frame");
