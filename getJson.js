@@ -143,7 +143,7 @@ const imageElement = document.getElementById("frame");
       const deltaY = (((event.touches[0].pageY + event.touches[1].pageY) / 2) - start.y) * 2; // x2 for accelarated movement
 
       // Transform the image to make it grow and move with fingers
-      const transform = `translate(${deltaX}px, ${deltaY}px, 0) scale(${imageElementScale})`;
+      const transform = `scale(${imageElementScale})`;
       imageElement.style.transform = transform;
       imageElement.style.WebkitTransform = transform;
       imageElement.style.zIndex = "9999";
