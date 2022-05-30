@@ -159,7 +159,7 @@ imageElement.addEventListener("touchmove", (event) => {
     scale = Math.max(scale, 0.5);
     scale = Math.min(scale, 2.0);
 
-    imageElementScale = Math.min(Math.max(0.6, scale), 2);
+    // imageElementScale = Math.min(Math.max(0.6, scale), 2);
 
     // Calculate how much the fingers have moved on the X and Y axis
     const deltaX =
@@ -173,8 +173,8 @@ imageElement.addEventListener("touchmove", (event) => {
     // imageElement.style.WebkitTransform = transform;
     // imageElement.style.zIndex = "9999";
     const el = document.querySelector("#frame");
-    el.style.transform = `scale(${imageElementScale})`;
-    el.style.WebkitTransform = `scale(${imageElementScale})`;
+    el.style.transform = `scale(${scale})`;
+    el.style.WebkitTransform = `scale(${scale})`;
     el.style.zIndex = "9999";
   }
 });
