@@ -13,7 +13,7 @@ let otherValue = 0;
 let imageElementScale = 1;
 let start = {};
 
-// handleJson(watch);
+handleJson(watch);
 
 // Calculate distance between two fingers
 const distance = (event) => {
@@ -74,13 +74,13 @@ function getDefaultDetailtY(deltaXValue) {
   return (otherValue = deltaXValue);
 }
 
-// function handleJson(args) {
-//     const visit_reservation = document.getElementById("visit_reservation");
-//     // canvas.innerHTML = args.image1;
-//     document.getElementById("ref").innerHTML = args.ref;
-//     document.getElementById("product-overview").innerHTML = args.brandname + args.seriesname + args.itemname;
-//     document.getElementById("case_size").innerHTML = `Case size: ${args.case_size}`;
-//     document.getElementById("price").innerHTML = `Y${(args.price * (args.tax + 100)) / 100} (tax inc.)`;
+function handleJson(args) {
+    const visit_reservation = document.getElementById("visit_reservation");
+    // canvas.innerHTML = args.image1;
+    document.getElementById("ref").innerHTML = args.ref;
+    document.getElementById("product-overview").innerHTML = args.brandname + args.seriesname + args.itemname;
+    document.getElementById("case_size").innerHTML = `Case size: ${args.case_size}`;
+    document.getElementById("price").innerHTML = `Y${(args.price * (args.tax + 100)) / 100} (tax inc.)`;
 
-//     args.visit_reservation ? visit_reservation.style.display = 'block' : visit_reservation.style.display = 'none';
-// }
+    args.visit_reservation ? visit_reservation.style.display = 'block' : visit_reservation.style.display = 'none';
+}
