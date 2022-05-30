@@ -110,7 +110,6 @@ const distance = (event) => {
 };
 
 imageElement.addEventListener("touchstart", (event) => {
-  console.log(1111);
   // console.log('touchstart', event);
   if (event.touches.length === 2) {
     event.preventDefault(); // Prevent page scroll
@@ -146,9 +145,13 @@ imageElement.addEventListener("touchmove", (event) => {
       ((event.touches[0].pageY + event.touches[1].pageY) / 2 - start.y) * 2; // x2 for accelarated movement
 
     // Transform the image to make it grow and move with fingers
-    const transform = `scale(${imageElementScale})`;
-    imageElement.style.transform = transform;
-    imageElement.style.WebkitTransform = transform;
-    imageElement.style.zIndex = "9999";
+    // const transform = `scale(${imageElementScale})`;
+    // imageElement.style.transform = transform;
+    // imageElement.style.WebkitTransform = transform;
+    // imageElement.style.zIndex = "9999";
+    const el = document.querySelector("#frame");
+    el.style.transform = `scale(${imageElementScale})`;
+    el.style.WebkitTransform = `scale(${imageElementScale})`;
+    el.style.zIndex = "9999";
   }
 });

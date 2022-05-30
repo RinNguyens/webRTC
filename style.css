@@ -32,8 +32,7 @@ h1 {
 }
 
 #frame {
-  touch-action: pinch-zoom;
-  z-index: 101;
+  z-index: 102;
   -webkit-transition: transform 1.05s ease-in-out;
   -moz-transition:transform 1.05s ease-in-out;
   -ms-transition:transform 1.05s ease-in-out;
