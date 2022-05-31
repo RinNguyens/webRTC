@@ -29,8 +29,8 @@ const CONSTRAINTS = {
   video: {
     width: 1920,
     height: 1080,
-    facingMode: "user" // フロントカメラを利用する
-    // facingMode: { exact: "environment" }, // リアカメラを利用する場合
+    // facingMode: "user" // フロントカメラを利用する
+    facingMode: { exact: "environment" }, // リアカメラを利用する場合
   },
 };
 
