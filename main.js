@@ -253,8 +253,8 @@ async function onShutter() {
 
 
     case 1.3:
-      frameResult.style.top = "46%";
-      frameResult.style.left = "28%";
+      frameResult.style.top = "47%";
+      frameResult.style.left = "29%";
       break;
 
     case 1.4:
