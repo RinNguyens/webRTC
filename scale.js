@@ -1,39 +1,58 @@
 // import dataJson from "./ar-watch.json" assert { type: "json" };
-// const watch = dataJson[0];
+let watch = [];
 const imageElement = document.getElementById("frame");
 let imageElementScale = 1;
 let start = {};
 
-// handleJson(watch);
+async function fetchJson() {
+  const response = await fetch('./ar-watch.json');
+  const json = await response.json();
+  return json;
+}
 
-// function handleJson(args) {
-//   const visit_reservation = document.getElementById("visit_reservation");
-//   // canvas.innerHTML = args.image1;
-//   document.getElementById("ref").innerHTML = args.ref;
-//   document.getElementById("product-overview").innerHTML =
-//     args.brandname + args.seriesname + args.itemname;
-//   document.getElementById(
-//     "case_size"
-//   ).innerHTML = `Case size: ${args.case_size}`;
-//   document.getElementById("price").innerHTML = `Y${
-//     (args.price * (args.tax + 100)) / 100
-//   } (tax inc.)`;
+fetchJson().then((arr) => {
+  let data_id = localStorage.getItem('data-id');
+  if (data_id) {
+    watch = getItemFromId(data_id, arr);
+    handleJson(watch[0]);
+  }
+  console.log(watch, 'watch')
+})
 
-//   // modal
-//   document.getElementById("ref-modal").innerHTML = args.ref;
-//   document.getElementById("product-overview-modal").innerHTML =
-//     args.brandname + args.seriesname + args.itemname;
-//   document.getElementById(
-//     "case_size-modal"
-//   ).innerHTML = `Case size: ${args.case_size}`;
-//   document.getElementById("price-modal").innerHTML = `Y${
-//     (args.price * (args.tax + 100)) / 100
-//   } (tax inc.)`;
 
-//   args.visit_reservation
-//     ? (visit_reservation.style.display = "block")
-//     : (visit_reservation.style.display = "none");
-// }
+function getItemFromId(id, arr) {
+  return arr.filter((item) => item.ID === +id);
+}
+
+
+function handleJson(args) {
+  const visit_reservation = document.getElementById("visit_reservation");
+  // canvas.innerHTML = args.image1;
+  document.getElementById("ref").innerHTML = args.ref;
+  document.getElementById("product-overview").innerHTML =
+    args.brandname + args.seriesname + args.itemname;
+  document.getElementById(
+    "case_size"
+  ).innerHTML = `Case size: ${args.case_size}`;
+  document.getElementById("price").innerHTML = `Y${
+    (args.price * (args.tax + 100)) / 100
+  } (tax inc.)`;
+
+  // modal
+  document.getElementById("ref-modal").innerHTML = args.ref;
+  document.getElementById("product-overview-modal").innerHTML =
+    args.brandname + args.seriesname + args.itemname;
+  document.getElementById(
+    "case_size-modal"
+  ).innerHTML = `Case size: ${args.case_size}`;
+  document.getElementById("price-modal").innerHTML = `Y${
+    (args.price * (args.tax + 100)) / 100
+  } (tax inc.)`;
+
+  args.visit_reservation
+    ? (visit_reservation.style.display = "block")
+    : (visit_reservation.style.display = "none");
+}
 
 // Calculate distance between two fingers
 const distance = (event) => {

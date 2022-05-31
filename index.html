@@ -1,181 +1,21 @@
 <!DOCTYPE html>
-<html>
-
-<head>
-  <meta charset="UTF-8">
-  <title>Demo</title>
-  <link rel="stylesheet" href="style.css" type="text/css" media="all">
-</head>
-
-<body style="overflow: hidden;">
-  <div id="wrapper">
-    <section id="contents">
-      <!-- カメラ映像 -->
-      <video id="camera" autoplay muted playsinline></video>
-
-      <div id="shadow">
-      </div>
-
-      <div id="detail">
-        <div class="wrapTitle">
-          <p class="title">
-            <img src="./image/logo.png" />
-          </p>
-          <img src="image/bannerTop.png" class="bannerTop" />
-        </div>
-        <img src="icon/detail.png" id="show-Detail" class="detailImg" />
-      </div>
-      <div id="product">
-        <p id="ref" class="name">SNE-123-123</p>
-        <p id="product-overview" class="product-overview">カメラ映像カメラ映像カメラ映像</p>
-        <div class="product-detail">
-          <p id="case_size" class="size">Case size: 41.0mm</p>
-          <p id="price" class="tax">Y682,200 (tax inc.)</p>
-        </div>
-      </div>
-
-      <div id="hand">
-        <img src="icon/hand.png" width="100%" height="100%" />
-      </div>
-      <!-- フレーム -->
-      <div id="detailWatch">
-        <div style="margin-left: 30px;">
-          <img src="image/detailWatch.png" class="notiWatch" />
-        </div>
-        <div style="transform: rotate(-5deg);">
-          <canvas id="frame" width="310" height="310"></canvas>
-        </div>
-      </div>
-
-      <!-- シャッター -->
-      <div id="shutter-inner">
-        <div class="container-shutter">
-          <img src="image/shutterDetail.png" class="shutter-detail" />
-        </div>
-        <button id="btn-shutter" type="button"><img src="icon/camera-solid.png" width="200" height="200"></button>
-      </div>
-
-      <!-- フレーム切り替え -->
-      <div id="frame-inner" style="display: none;">
-        <h2>フレーム切り替え</h2>
-        <ul id="framelist">
-        </ul>
-      </div>
-    </section>
-
-    <!-- 合成用Canvas(不可視) -->
-    <canvas id="still" width="700" height="1000"></canvas>
-
-    <!-- ダイアログ -->
-    <div id="dialog-outer">
-      <!-- 最終結果 -->
-      <div id="dialog-result" class="dialog">
-        <p>
-          <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
-        </p>
-        <div id="wrapImg">
-
-          <!-- <canvas id="resultImg" width="762" height="1680"></canvas> -->
-          <div id="resultImg">
-            <div>
-              <div id="detail-modal">
-                <div class="wrapTitle-modal">
-                  <p class="title-modal">
-                    <img src="./image/logo.png" />
-                  </p>
-                  <img src="image/bannerTop.png" class="bannerTop" style="display: none;" />
-                </div>
-                <img src="icon/detail.png" id="show-Detail" class="detailImg-modal" style="display: none;" />
-              </div>
-              <p class="hr-modal"></p>
-              <div id="product-modal">
-                <p id="ref-modal" class="name-modal">SBGA211</p>
-                <p id="product-overview-modal" class="product-overview-modal">カメラ映像カメラ映像カメラ映像</p>
-                <div class="product-detail-modal">
-                  <p id="case_size-modal" class="size-modal">Case size: 41.0mm</p>
-                  <p id="price-modal" class="tax-modal">Y682,200 (tax inc.)</p>
-                </div>
-              </div>
-            </div>
-            <div id="shadowModal"></div>
-            <div>
-              <canvas id="frameResult"></canvas>
-            </div>
-            <img id="photo" />
-          </div>
-
-        </div>
-        <div id="content-detail">
-          <!-- <div id="fitting">
-            <h1>VIRTUAL FITTING APP</h1>
-          </div> -->
-          <div id="list-content">
-            <div class="link item">
-              <img src="icon/genta.png" class="item-img" />
-              <div class="base">
-                <h2>LINK</h2>
-                <div class="base-text">
-                  <p>ロゴリンクをタップすることでトップページに戻れます</p>
-                </div>
-              </div>
-            </div>
-            <div class="scale item">
-              <img src="icon/pinchin.png" class="item-img" />
-              <div class="base">
-                <h2>SCALE</h2>
-                <div class="base-text">
-                  <p>ピンチイン・アウトで時計のサイズを拡大縮小します</p>
-                </div>
-              </div>
-            </div>
-            <div class="camera item">
-              <img src="icon/camera-solid.png" class="item-img" />
-              <div class="base">
-                <h2>CAMERA</h2>
-                <div class="base-text">
-                  <p>ボタンタップで画面を撮影してスマートフォンに保存します</p>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div id="phone-number">
-            <p><a href="tel:0522642681">
-                <img src="image/phone.png" class="phone" />
-              </a></p>
-            <p id="visit_reservation">
-              <a href="#">
-                <img src="image/home.png" class="home" />
-              </a>
-            </p>
-
-          </div>
-        </div>
-        <div class="btnBottom" id="download">
-          <button id="dialog-result-dl" type="button">
-            <img src="icon/download-solid.png" width="48" height="48">
-          </button>
-        </div>
-      </div>
-
-      <!--  NowLoading -->
-      <div id="dialog-nowloading" class="dialog">
-        ...Now Loading
-      </div>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Demo Daimaru</title>
+  </head>
+  <body>
+    <div>
+      <a href="./product.html" data-id="215" onclick="getIdProduct(this)">
+        <img src="./image/main-watch.png" alt="" style="width: 100%" />
+      </a>
     </div>
-    <!-- /ダイアログ -->
-
-    <audio id="se" preload="auto">
-      <source src="se/camera-shutter1.mp3" type="audio/mp3">
-    </audio>
-
-  </div>
-  <script type="module" src="scale.js"></script>
-  <script src="util.js" type="text/javascript"></script>
-  <script src="html2canvas.min.js"></script>
-  <script src="main.js" type="text/javascript"></script>
-</body>
-
-</html>
-</body>
-
+  </body>
+  <script>
+    function getIdProduct(d) {
+      localStorage.setItem("data-id", d.getAttribute("data-id"));
+    }
+  </script>
 </html>
