@@ -283,7 +283,7 @@ h1 {
 #frameResult {
   position: absolute;
   top: 51%;
-  left: 32.5%;
+  left: 31%;
   transform: rotate(-5deg);
   z-index: 20;
 }

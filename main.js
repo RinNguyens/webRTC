@@ -210,8 +210,8 @@ async function drawFrameCopy(path, obj) {
   image.src = path;
   console.log(obj, 'obj', startFrame.width)
   if (obj.width >= startFrame.width) {
-    frameResult.width = obj.width - (scaleTotal * 100);
-    frameResult.height = obj.height - (scaleTotal * 100);
+    frameResult.width = obj.width - ((scaleTotal + 0.1) * 100);
+    frameResult.height = obj.height - ((scaleTotal + 0.1) * 100);
   }
 
   image.onload = () => {
@@ -268,12 +268,12 @@ async function onShutter() {
       break;
 
     case 1.6:
-      frameResult.style.top = "40%";
+      frameResult.style.top = "43%"; // 40
       frameResult.style.left = "25%";
       break;
 
     case 1.7:
-      frameResult.style.top = "42%";
+      frameResult.style.top = "43%";
       frameResult.style.left = "25%";
       break;
 }
