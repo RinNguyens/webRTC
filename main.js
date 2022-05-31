@@ -18,7 +18,7 @@ let base64 = null;
 /** フレーム素材一覧 */
 const FRAMES = [
   {
-    large: "image/watch.png",
+    large: "image/main-watch.png",
     small: "image/w.png",
   },
 ];
