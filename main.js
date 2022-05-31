@@ -189,7 +189,7 @@ function setFrameList() {
  * @return {void}
  */
 function drawFrame(path) {
-  const modal = "#dialog-nowloading";
+  // const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
   image.onload = () => {
@@ -197,15 +197,15 @@ function drawFrame(path) {
     ctx.clearRect(0, 0, frame.width, frame.height);
     ctx.drawImage(image, 0, 0, frame.width, frame.height);
 
-    setTimeout(() => {
-      dialogHide(modal);
-    }, 100);
+    // setTimeout(() => {
+    //   dialogHide(modal);
+    // }, 100);
   };
-  dialogShow(modal);
+  // dialogShow(modal);
 }
 
 async function drawFrameCopy(path, obj) {
-  const modal = "#dialog-nowloading";
+  // const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
   console.log(obj, "obj", startFrame.width);
@@ -219,11 +219,11 @@ async function drawFrameCopy(path, obj) {
     ctx.clearRect(0, 0, frameResult.width, frameResult.height);
     ctx.drawImage(image, 0, 0, frameResult.width, frameResult.height);
 
-    setTimeout(() => {
-      dialogHide(modal);
-    }, 100);
+    // setTimeout(() => {
+    //   dialogHide(modal);
+    // }, 100);
   };
-  dialogShow(modal);
+  // dialogShow(modal);
 }
 
 /**
