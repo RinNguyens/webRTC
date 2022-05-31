@@ -29,8 +29,8 @@ const CONSTRAINTS = {
   video: {
     width: 1920,
     height: 1080,
-    // facingMode: "user" // フロントカメラを利用する
-    facingMode: { exact: "environment" }, // リアカメラを利用する場合
+    facingMode: "user" // フロントカメラを利用する
+    // facingMode: { exact: "environment" }, // リアカメラを利用する場合
   },
 };
 
@@ -65,7 +65,7 @@ window.onload = () => {
     // get width and height IMG
 
     // concatCanvas("#resultImg", ["#frameResult"], WH); // フレームと合成
-    changeWidth("#dialog-result", "80%");
+    changeWidth("#dialog-result", "60%");
     hiddenTag("#content-detail");
     dialogShowImgResult("#wrapImg", "#download");
     // 最終結果ダイアログを表示

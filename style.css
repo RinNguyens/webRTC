@@ -274,7 +274,7 @@ h1 {
 }
 
 #wrapImg {
-  height: 80%;
+  height: 100%;
   object-fit: cover;
   background-size: cover;
   position: relative;
@@ -303,7 +303,7 @@ h1 {
   position: absolute;
   height: 9%;
   left: 43%;
-  bottom: 4%;
+  bottom: 2%;
 }
 
 #dialog-result-close {
