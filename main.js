@@ -208,9 +208,10 @@ async function drawFrameCopy(path, obj) {
   const modal = "#dialog-nowloading";
   const image = new Image();
   image.src = path;
-  if (obj.width > startFrame.width) {
-    frameResult.width = obj.width - 160;
-    frameResult.height = obj.height - 140;
+  console.log(obj, 'obj', startFrame.width)
+  if (obj.width >= startFrame.width) {
+    frameResult.width = obj.width - 100;
+    frameResult.height = obj.height - 100;
   }
 
   image.onload = () => {
