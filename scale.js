@@ -1,28 +1,39 @@
-// // import dataJson from "./ar-watch.json" assert { type: "json" };
-// // const watch = dataJson[0];
+import dataJson from "./ar-watch.json" assert { type: "json" };
+const watch = dataJson[0];
 const imageElement = document.getElementById("frame");
 let imageElementScale = 1;
 let start = {};
 
-// handleJson(watch);
+handleJson(watch);
 
-// function handleJson(args) {
-//   const visit_reservation = document.getElementById("visit_reservation");
-//   // canvas.innerHTML = args.image1;
-//   document.getElementById("ref").innerHTML = args.ref;
-//   document.getElementById("product-overview").innerHTML =
-//     args.brandname + args.seriesname + args.itemname;
-//   document.getElementById(
-//     "case_size"
-//   ).innerHTML = `Case size: ${args.case_size}`;
-//   document.getElementById("price").innerHTML = `Y${
-//     (args.price * (args.tax + 100)) / 100
-//   } (tax inc.)`;
+function handleJson(args) {
+  const visit_reservation = document.getElementById("visit_reservation");
+  // canvas.innerHTML = args.image1;
+  document.getElementById("ref").innerHTML = args.ref;
+  document.getElementById("product-overview").innerHTML =
+    args.brandname + args.seriesname + args.itemname;
+  document.getElementById(
+    "case_size"
+  ).innerHTML = `Case size: ${args.case_size}`;
+  document.getElementById("price").innerHTML = `Y${
+    (args.price * (args.tax + 100)) / 100
+  } (tax inc.)`;
 
-//   args.visit_reservation
-//     ? (visit_reservation.style.display = "block")
-//     : (visit_reservation.style.display = "none");
-// }
+  // modal
+  document.getElementById("ref-modal").innerHTML = args.ref;
+  document.getElementById("product-overview-modal").innerHTML =
+    args.brandname + args.seriesname + args.itemname;
+  document.getElementById(
+    "case_size-modal"
+  ).innerHTML = `Case size: ${args.case_size}`;
+  document.getElementById("price-modal").innerHTML = `Y${
+    (args.price * (args.tax + 100)) / 100
+  } (tax inc.)`;
+
+  args.visit_reservation
+    ? (visit_reservation.style.display = "block")
+    : (visit_reservation.style.display = "none");
+}
 
 // Calculate distance between two fingers
 const distance = (event) => {

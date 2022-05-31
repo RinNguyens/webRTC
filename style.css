@@ -78,8 +78,9 @@ h1 {
   align-items: center;
 }
 
-.title {
+.title > img{
   font-size: 50px;
+  width: 100%;
   color: #ffffff;
 }
 
@@ -417,7 +418,8 @@ h1 {
   align-items: center;
 }
 
-.title-modal {
+.title-modal > img {
+  width: 50%;
   font-size: 50px;
   color: #ffffff;
 }
