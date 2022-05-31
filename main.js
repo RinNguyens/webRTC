@@ -241,6 +241,7 @@ async function onShutter() {
 
 
   scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
+  console.log(scaleTotal, 'scaleTotal');
   switch (scaleTotal) {
     case 1.1:
       frameResult.style.top = "50%";
