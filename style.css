@@ -284,7 +284,7 @@ h1 {
   position: absolute;
   top: 51%;
   left: 32.5%;
-  transform: skewX(10deg);
+  transform: rotate(-5deg);
   z-index: 20;
 }
 
@@ -388,7 +388,7 @@ h1 {
 }
 
 .base-text > p {
-  font-size: 23px;
+  font-size: 30px;
 }
 
 .phone-number {
