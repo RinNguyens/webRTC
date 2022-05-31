@@ -242,13 +242,13 @@ async function onShutter() {
   console.log(scaleTotal, 'scaleTotal');
   switch (scaleTotal) {
     case 1.1:
-      frameResult.style.top = "50%";
-      frameResult.style.left = "32%";
+      frameResult.style.top = "49%";
+      frameResult.style.left = "31%";
       break;
 
     case 1.2:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "32%";
+      frameResult.style.top = "48%";
+      frameResult.style.left = "30%";
       break;
 
 
@@ -266,7 +266,17 @@ async function onShutter() {
       frameResult.style.top = "42%";
       frameResult.style.left = "25%";
       break;
-  }
+
+    case 1.6:
+      frameResult.style.top = "40%";
+      frameResult.style.left = "25%";
+      break;
+
+    case 1.7:
+      frameResult.style.top = "42%";
+      frameResult.style.left = "25%";
+      break;
+}
 
   await drawFrameCopy(FRAMES[0].large, getWeight);
 
