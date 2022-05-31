@@ -211,9 +211,6 @@ async function drawFrameCopy(path, obj) {
   if (obj.width > startFrame.width) {
     frameResult.width = obj.width - 160;
     frameResult.height = obj.height - 140;
-  } else {
-    frameResult.width = obj.width - 120;
-    frameResult.height = obj.height - 100;
   }
 
   image.onload = () => {
