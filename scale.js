@@ -49,6 +49,8 @@ function handleJson(args) {
     (args.price * (args.tax + 100)) / 100
   } (tax inc.)`;
 
+  document.getElementById("phone-tell").href = `tel:${args.direct_phonenumber}`;
+
   args.visit_reservation
     ? (visit_reservation.style.display = "block")
     : (visit_reservation.style.display = "none");
