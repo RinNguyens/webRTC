@@ -243,21 +243,6 @@ async function onShutter() {
   scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
   console.log(scaleTotal, 'scaleTotal');
   switch (scaleTotal) {
-    case 0.7:
-      frameResult.style.top = "54%";
-      frameResult.style.left = "37%";
-      break;
-
-    case 0.8:
-      frameResult.style.top = "54%";
-      frameResult.style.left = "36%";
-      break;
-
-    case 0.9:
-      frameResult.style.top = "52%";
-      frameResult.style.left = "32%";
-      break;
-
     case 1.1:
       frameResult.style.top = "50%";
       frameResult.style.left = "32%";
@@ -284,11 +269,6 @@ async function onShutter() {
       frameResult.style.left = "25%";
       break;
   }
-
-  // if (getWeight.width / startFrame.width >= 1.2 && getWeight.width / startFrame.width <= 1.4) {
-  //   frameResult.style.top = '50%';
-  //   frameResult.style.left = '30%';
-  // }
 
   await drawFrameCopy(FRAMES[0].large, getWeight);
 

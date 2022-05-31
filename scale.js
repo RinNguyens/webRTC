@@ -79,8 +79,8 @@ imageElement.addEventListener("touchmove", (event) => {
     }
 
     scale = Number.isNaN(scale) ? 1.0 : scale;
-    scale = Math.max(scale, 0.7);
-    scale = Math.min(scale, 1.5);
+    scale = Math.max(scale, 1);
+    scale = Math.min(scale, 1.6);
 
     // Transform the image to make it grow and move with fingers
     const el = document.querySelector("#frame");
