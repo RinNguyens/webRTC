@@ -35,9 +35,9 @@ h1 {
 
 #frame {
   z-index: 110;
-  /* -webkit-transition: transform 1.05s ease-in-out;
-  -moz-transition:transform 1.05s ease-in-out;
-  -ms-transition:transform 1.05s ease-in-out; */
+  -webkit-transition: transform 0.3s ease-in-out;
+  -moz-transition:transform 0.3s ease-in-out;
+  -ms-transition:transform 0.3s ease-in-out;
 }
 
 #still {
