@@ -245,12 +245,12 @@ async function onShutter() {
   switch (scaleTotal) {
     case 0.7:
       frameResult.style.top = "54%";
-      frameResult.style.left = "35%";
+      frameResult.style.left = "36%";
       break;
 
     case 0.8:
       frameResult.style.top = "54%";
-      frameResult.style.left = "33%";
+      frameResult.style.left = "35%";
       break;
 
     case 0.9:
