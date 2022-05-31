@@ -209,10 +209,8 @@ async function drawFrameCopy(path, obj) {
   const image = new Image();
   image.src = path;
   console.log(obj, "obj", startFrame.width);
-  if (obj.width >= startFrame.width) {
-    frameResult.width = obj.width - (scaleTotal + 0.1) * 100;
-    frameResult.height = obj.height - (scaleTotal + 0.1) * 100;
-  }
+  frameResult.width = obj.width - (scaleTotal + 0.1) * 100;
+  frameResult.height = obj.height - (scaleTotal + 0.1) * 100;
 
   image.onload = () => {
     const ctx = FRAMERESULT.getContext("2d");
