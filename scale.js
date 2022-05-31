@@ -72,9 +72,6 @@ const distanceScale = (event) => {
 };
 
 imageElement.addEventListener("touchstart", (event) => {
-  const el = document.querySelector("#frame");
-  el.style.transform = `scale(${1.4})`;
-    console.log('hello');
   if (event.touches.length === 2) {
     event.preventDefault(); // Prevent page scroll
 
