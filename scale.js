@@ -38,16 +38,16 @@ function handleJson(args) {
     (args.price * (args.tax + 100)) / 100
   } (tax inc.)`;
 
-  // modal
-  document.getElementById("ref-modal").innerHTML = args.ref;
-  document.getElementById("product-overview-modal").innerHTML =
-    args.brandname + args.seriesname + args.itemname;
-  document.getElementById(
-    "case_size-modal"
-  ).innerHTML = `Case size: ${args.case_size}`;
-  document.getElementById("price-modal").innerHTML = `Y${
-    (args.price * (args.tax + 100)) / 100
-  } (tax inc.)`;
+  // // modal
+  // document.getElementById("ref-modal").innerHTML = args.ref;
+  // document.getElementById("product-overview-modal").innerHTML =
+  //   args.brandname + args.seriesname + args.itemname;
+  // document.getElementById(
+  //   "case_size-modal"
+  // ).innerHTML = `Case size: ${args.case_size}`;
+  // document.getElementById("price-modal").innerHTML = `Y${
+  //   (args.price * (args.tax + 100)) / 100
+  // } (tax inc.)`;
 
   document.getElementById("phone-tell").href = `tel:${args.direct_phonenumber}`;
 
@@ -99,7 +99,7 @@ imageElement.addEventListener("touchmove", (event) => {
 
     scale = Number.isNaN(scale) ? 1.0 : scale;
     scale = Math.max(scale, 1);
-    scale = Math.min(scale, 1.6);
+    scale = Math.min(scale, 2);
 
     // Transform the image to make it grow and move with fingers
     const el = document.querySelector("#frame");

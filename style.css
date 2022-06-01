@@ -73,6 +73,7 @@ h1 {
   padding-top: 20px;
   top: 0;
   padding-bottom: 20px;
+  height: 150px;
 }
 
 .wrapTitle {
@@ -81,20 +82,19 @@ h1 {
 }
 
 .title > img{
-  font-size: 50px;
-  width: 100%;
+  width: 85%;
   color: #ffffff;
 }
 
 .wrapTitle > .bannerTop {
-  width: 50%;
+  width: 45%;
   margin-left: 15px;
   margin-right: 30px;
 }
 
 .detailImg {
-  width: 80px;
-  height: 80px;
+  width: 65px;
+  height: 65px;
 }
 
 #product {
@@ -110,7 +110,7 @@ h1 {
 }
 
 .product-overview {
-  font-size: 50px;
+  font-size: 35px;
 }
 
 .product-detail {
@@ -186,8 +186,8 @@ h1 {
 }
 
 #hand {
-  -webkit-animation: fiveSecond 10s forwards;
-  animation: fiveSecond 10s forwards;
+  -webkit-animation: fiveSecond 5s forwards;
+  animation: fiveSecond 5s forwards;
 }
 
 @keyframes fiveSecond {
@@ -410,10 +410,10 @@ h1 {
   z-index: 20;
   display: flex;
   align-items: center;
-  padding: 20px;
   top: 0;
   padding-bottom: 20px;
-  width: 100%;
+  margin: 30px 20px;
+  border-bottom: 1px solid #FFFFFF;
 }
 
 .wrapTitle-modal {
@@ -451,7 +451,7 @@ h1 {
 }
 
 .product-overview-modal {
-  font-size: 40px;
+  font-size: 30px;
 }
 
 .product-detail-modal {
@@ -481,4 +481,24 @@ h1 {
   background-repeat: no-repeat;
   background-position: center;
   opacity: 1;
+}
+
+@media only screen and (max-device-width: 375px) {
+  #product {
+    top: 13%;
+  }
+  
+  #detailWatch {
+    top: 36%;
+  }
+
+  #dialog-result {
+    height: 85% !important;
+  }
+}
+
+@media only screen and (max-device-width: 415px) {
+  #dialog-result {
+    height: 85% !important;
+  }
 }
