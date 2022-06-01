@@ -63,6 +63,10 @@
       </div>
     </section>
 
+    <!-- 合成用Canvas(不可視) -->
+    <canvas id="still" width="700" height="1000"></canvas>
+
+
     <!-- ダイアログ -->
     <div id="dialog-outer">
       <!-- 最終結果 -->
@@ -71,9 +75,9 @@
           <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
         </p>
         <div id="wrapImg">
-          <!-- <canvas id="resultImg" width="762" height="1680"></canvas> -->
+          <canvas id="resultImg" width="762" height="1680"></canvas>
           <div id="resultImg">
-            <!-- <div>
+            <div>
               <div id="detail-modal">
                 <div class="wrapTitle-modal">
                   <p class="title-modal">
@@ -91,11 +95,11 @@
                   <p id="price-modal" class="tax-modal">Y682,200 (tax inc.)</p>
                 </div>
               </div>
-            </div> -->
-            <!-- <div id="shadowModal" style="z-index: 1;"></div> -->
-            <!-- <div>
+            </div>
+            <div id="shadowModal" style="z-index: 1;"></div>
+            <div>
               <canvas id="frameResult"></canvas>
-            </div> -->
+            </div>
             <img id="photo" style="z-index: 20;" />
           </div>
 

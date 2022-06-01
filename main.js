@@ -29,8 +29,8 @@ const CONSTRAINTS = {
   video: {
     width: 1920,
     height: 1080,
-    facingMode: "user" // フロントカメラを利用する
-    // facingMode: { exact: "environment" }, // リアカメラを利用する場合
+    // facingMode: "user" // フロントカメラを利用する
+    facingMode: { exact: "environment" }, // リアカメラを利用する場合
   },
 };
 
@@ -88,7 +88,7 @@ window.onload = () => {
   document
     .querySelector("#dialog-result-close")
     .addEventListener("click", (e) => {
-      showParams("#shutter-inner", "#show-Detail", "#show-Detail");
+      // showParams("#shutter-inner", "#show-Detail", "#show-Detail");
       hiddenTag("#container-shutter");
       VIDEO.play();
       dialogHide("#dialog-result");
@@ -228,76 +228,76 @@ async function drawFrameCopy(path, obj) {
  * @return {void}
  **/
 async function onShutter() {
-  // getWeight = {
-  //   height: FRAME.getBoundingClientRect().height,
-  //   width: FRAME.getBoundingClientRect().width,
-  // };
+  getWeight = {
+    height: FRAME.getBoundingClientRect().height,
+    width: FRAME.getBoundingClientRect().width,
+  };
 
-  // scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
-  // console.log(scaleTotal, "scaleTotal");
-  // switch (scaleTotal) {
-  //   case 1.1:
-  //     frameResult.style.top = "49%";
-  //     frameResult.style.left = "31%";
-  //     break;
+  scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
+  console.log(scaleTotal, "scaleTotal");
+  switch (scaleTotal) {
+    case 1.1:
+      frameResult.style.top = "49%";
+      frameResult.style.left = "31%";
+      break;
 
-  //   case 1.2:
-  //     frameResult.style.top = "48%";
-  //     frameResult.style.left = "30%";
-  //     break;
+    case 1.2:
+      frameResult.style.top = "48%";
+      frameResult.style.left = "30%";
+      break;
 
-  //   case 1.3:
-  //     frameResult.style.top = "47%";
-  //     frameResult.style.left = "29%";
-  //     break;
+    case 1.3:
+      frameResult.style.top = "47%";
+      frameResult.style.left = "29%";
+      break;
 
-  //   case 1.4:
-  //     frameResult.style.top = "44%";
-  //     frameResult.style.left = "26%";
-  //     break;
+    case 1.4:
+      frameResult.style.top = "44%";
+      frameResult.style.left = "26%";
+      break;
 
-  //   case 1.5:
-  //     frameResult.style.top = "42%";
-  //     frameResult.style.left = "25%";
-  //     break;
+    case 1.5:
+      frameResult.style.top = "42%";
+      frameResult.style.left = "25%";
+      break;
 
-  //   case 1.6:
-  //     frameResult.style.top = "43%"; // 40
-  //     frameResult.style.left = "25%";
-  //     break;
+    case 1.6:
+      frameResult.style.top = "43%"; // 40
+      frameResult.style.left = "25%";
+      break;
 
-  //   case 1.7:
-  //     frameResult.style.top = "43%";
-  //     frameResult.style.left = "25%";
-  //     break;
-  // }
+    case 1.7:
+      frameResult.style.top = "43%";
+      frameResult.style.left = "25%";
+      break;
+  }
 
-  // await drawFrameCopy(FRAMES[0].large, getWeight);
+  await drawFrameCopy(FRAMES[0].large, getWeight);
 
-  // const ctx = STILL.getContext("2d");
+  const ctx = STILL.getContext("2d");
 
-  // ctx.clearRect(0, 0, STILL.width, STILL.height);
+  ctx.clearRect(0, 0, STILL.width, STILL.height);
 
-  // // videoを画像として切り取り、canvasに描画
-  // ctx.drawImage(VIDEO, 0, 0, STILL.width, STILL.height);
+  // videoを画像として切り取り、canvasに描画
+  ctx.drawImage(VIDEO, 0, 0, STILL.width, STILL.height);
 
-  // base64 = STILL.toDataURL("image/png");
-  // photo.setAttribute("src", base64);
+  base64 = STILL.toDataURL("image/png");
+  photo.setAttribute("src", base64);
 
-  // const img = new Image();
+  const img = new Image();
 
-  // img.src = base64;
+  img.src = base64;
 
-  // img.onload = function () {
-  //   const imgWidth = img.naturalWidth;
-  //   const imgHeight = img.naturalHeight;
-  // };
-  hideParams("#shutter-inner", "#hand", "#notiWatch", "#show-Detail", "#img-noti");
+  img.onload = function () {
+    const imgWidth = img.naturalWidth;
+    const imgHeight = img.naturalHeight;
+  };
+  // hideParams("#shutter-inner", "#hand", "#notiWatch", "#show-Detail", "#img-noti");
 
-  await html2canvas(document.querySelector("#contents")).then((img) => {
-    var dataURL = img.toDataURL("image/png");
-    photo.setAttribute("src", dataURL);
-  })
+  // await html2canvas(document.querySelector("#contents")).then((img) => {
+  //   var dataURL = img.toDataURL("image/png");
+  //   photo.setAttribute("src", dataURL);
+  // })
 }
 
 /**
