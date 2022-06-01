@@ -49,7 +49,7 @@ window.onload = () => {
   // フレーム初期化
   //-----------------------------
   drawFrame(FRAMES[0].large); // 初期フレームを表示
-  setFrameList(); // 切り替え用のフレーム一覧を表示
+  // setFrameList(); // 切り替え用のフレーム一覧を表示
 
   //-----------------------------
   // シャッターボタン
@@ -160,25 +160,25 @@ async function syncCamera() {
  *
  * @return {void}
  **/
-function setFrameList() {
-  const list = document.querySelector("#framelist");
-  let i = 0;
-  FRAMES.forEach((item) => {
-    const li = document.createElement("li");
-    li.innerHTML = `<img src="${item.small}">`; // <li><img ...></li>
-    li.classList.add("framelist"); // <li class="framelist" ...
-    li.setAttribute("data-index", i++); // <li data-index="1" ...
+// function setFrameList() {
+//   const list = document.querySelector("#framelist");
+//   let i = 0;
+//   FRAMES.forEach((item) => {
+//     const li = document.createElement("li");
+//     li.innerHTML = `<img src="${item.small}">`; // <li><img ...></li>
+//     li.classList.add("framelist"); // <li class="framelist" ...
+//     li.setAttribute("data-index", i++); // <li data-index="1" ...
 
-    // クリックされるとフレーム変更
-    li.addEventListener("click", (e) => {
-      const idx = e.target.parentElement.getAttribute("data-index"); // 親(parent)がli
-      drawFrame(FRAMES[idx].large);
-    });
+//     // クリックされるとフレーム変更
+//     li.addEventListener("click", (e) => {
+//       const idx = e.target.parentElement.getAttribute("data-index"); // 親(parent)がli
+//       drawFrame(FRAMES[idx].large);
+//     });
 
-    // ulに追加
-    list.appendChild(li);
-  });
-}
+//     // ulに追加
+//     list.appendChild(li);
+//   });
+// }
 
 /**
  * 指定フレームを描画する
