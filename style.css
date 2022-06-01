@@ -271,8 +271,8 @@ h1 {
 }
 
 #dialog-result {
-  /* height: 90%; */
   position: relative;
+  height: 80%;
 }
 
 #wrapImg {

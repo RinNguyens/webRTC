@@ -97,7 +97,7 @@ window.onload = () => {
   // ダウンロードボタン
   document.querySelector("#dialog-result-dl").addEventListener("click", (e) => {
     // canvasDownload("#photo", base64);
-    html2canvas(document.querySelector("#resultImg")).then((canvas) => {
+    html2canvas(document.querySelector("#contents")).then((canvas) => {
       var dataURL = canvas.toDataURL("image/png");
       var data = atob(dataURL.substring("data:image/png;base64,".length)),
         asArray = new Uint8Array(data.length);
