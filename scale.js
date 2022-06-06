@@ -5,29 +5,27 @@ let imageElementScale = 1;
 let start = {};
 
 async function fetchJson() {
-  const response = await fetch('./ar-watch.json');
+  const response = await fetch("./ar-watch.json");
   const json = await response.json();
   return json;
 }
 
 fetchJson().then((arr) => {
-  let data_id = localStorage.getItem('data-id');
+  let data_id = localStorage.getItem("data-id");
   if (data_id) {
     watch = getItemFromId(data_id, arr);
     handleJson(watch[0]);
   }
-  console.log(watch, 'watch')
-})
-
+});
 
 function getItemFromId(id, arr) {
   return arr.filter((item) => item.ID === +id);
 }
 
-
 function handleJson(args) {
   const visit_reservation = document.getElementById("visit_reservation");
   // canvas.innerHTML = args.image1;
+  document.getElementById("title").href = args.url;
   document.getElementById("ref").innerHTML = args.ref;
   document.getElementById("product-overview").innerHTML =
     args.brandname + args.seriesname + args.itemname;
@@ -38,7 +36,7 @@ function handleJson(args) {
     (args.price * (args.tax + 100)) / 100
   } (tax inc.)`;
 
-  // // modal
+  // modal
   // document.getElementById("ref-modal").innerHTML = args.ref;
   // document.getElementById("product-overview-modal").innerHTML =
   //   args.brandname + args.seriesname + args.itemname;
@@ -50,6 +48,8 @@ function handleJson(args) {
   // } (tax inc.)`;
 
   document.getElementById("phone-tell").href = `tel:${args.direct_phonenumber}`;
+  document.getElementById("visit_reservation_book").href = args.url;
+
 
   args.visit_reservation
     ? (visit_reservation.style.display = "block")
@@ -83,7 +83,6 @@ imageElement.addEventListener("touchstart", (event) => {
 });
 
 imageElement.addEventListener("touchmove", (event) => {
- 
   if (event.touches.length === 2) {
     event.preventDefault(); // Prevent page scroll
     // Safari provides event.scale as two fingers move on the screen
@@ -98,8 +97,8 @@ imageElement.addEventListener("touchmove", (event) => {
     }
 
     scale = Number.isNaN(scale) ? 1.0 : scale;
-    scale = Math.max(scale, 1);
-    scale = Math.min(scale, 2);
+    scale = Math.max(scale, 1.1);
+    scale = Math.min(scale, 2.3);
 
     // Transform the image to make it grow and move with fingers
     const el = document.querySelector("#frame");

@@ -11,39 +11,44 @@
   <div id="wrapper">
     <section id="contents">
       <!-- カメラ映像 -->
-      <video id="camera" autoplay muted playsinline></video>
-
-      <div id="shadow">
+      <div>
+        <video id="camera" autoplay muted playsinline hidden></video>
       </div>
-
-      <div id="detail">
-        <div class="wrapTitle">
-          <p class="title">
-            <img src="./image/logo.png" />
-          </p>
-          <img src="image/bannerTop.png" id="img-noti" class="bannerTop" />
+      <div id="screenWatch">
+        <div>
+          <canvas id="canvasReplicate"></canvas>
         </div>
-        <img src="icon/detail.png" id="show-Detail" class="detailImg" />
-      </div>
-      <div id="product">
-        <p id="ref" class="name">SNE-123-123</p>
-        <p id="product-overview" class="product-overview">カメラ映像カメラ映像カメラ映像</p>
-        <div class="product-detail">
-          <p id="case_size" class="size">Case size: 41.0mm</p>
-          <p id="price" class="tax">Y682,200 (tax inc.)</p>
+        <div id="shadow">
         </div>
-      </div>
+        <div id="wrapContent">
+          <div id="detail">
+            <div class="wrapTitle">
+              <a id="title" class="title">
+                <img src="./image/logo.png" />
+              </a>
+              <img src="image/bannerTop.png" id="img-noti" class="bannerTop" />
+            </div>
+            <img src="icon/detail.png" id="show-Detail" class="detailImg" />
+          </div>
+          <div id="product">
+            <p id="ref" class="name">SNE-123-123</p>
+            <p id="product-overview" class="product-overview">カメラ映像カメラ映像カメラ映像</p>
+            <div class="product-detail">
+              <p id="case_size" class="size case-price">Case size: 41.0mm</p>
+              <p id="price" class="tax case-price">Y682,200 (tax inc.)</p>
+            </div>
+          </div>
 
-      <div id="hand">
-        <img src="icon/hand.png" width="100%" height="100%" />
-      </div>
-      <!-- フレーム -->
-      <div id="detailWatch">
-        <div style="margin-left: 30px;">
-          <img id="notiWatch" src="image/detailWatch.png" class="notiWatch" />
-        </div>
-        <div style="transform: rotate(-5deg);">
-          <canvas id="frame" width="310" height="310"></canvas>
+          <div id="hand">
+            <img src="icon/hand.png" width="100%" height="100%" />
+          </div>
+          <!-- フレーム -->
+          <div id="watch-tooltip" style="margin-left: 30px;">
+            <img id="notiWatch" src="image/detailWatch.png" class="notiWatch" />
+          </div>
+          <div id="main-watch" style="transform: rotate(-5deg);">
+            <canvas id="frame" width="310" height="310"></canvas>
+          </div>
         </div>
       </div>
 
@@ -54,18 +59,7 @@
         </div>
         <button id="btn-shutter" type="button"><img src="icon/camera-solid.png" width="200" height="200"></button>
       </div>
-
-      <!-- フレーム切り替え -->
-      <div id="frame-inner" style="display: none;">
-        <h2>フレーム切り替え</h2>
-        <ul id="framelist">
-        </ul>
-      </div>
     </section>
-
-    <!-- 合成用Canvas(不可視) -->
-    <canvas id="still" width="700" height="1000"></canvas>
-
 
     <!-- ダイアログ -->
     <div id="dialog-outer">
@@ -74,46 +68,16 @@
         <p>
           <img id="dialog-result-close" src="icon/times-circle-regular.png" width="48" height="48">
         </p>
+
         <div id="wrapImg">
-          <canvas id="resultImg" width="762" height="1680"></canvas>
           <div id="resultImg">
-            <div>
-              <div id="detail-modal">
-                <div class="wrapTitle-modal">
-                  <p class="title-modal">
-                    <img src="./image/logo.png" />
-                  </p>
-                  <img src="image/bannerTop.png" class="bannerTop" style="display: none;" />
-                </div>
-                <img src="icon/detail.png" id="show-Detail" class="detailImg-modal" style="display: none;" />
-              </div>
-              <div id="product-modal">
-                <p id="ref-modal" class="name-modal">SBGA211</p>
-                <p id="product-overview-modal" class="product-overview-modal">カメラ映像カメラ映像カメラ映像</p>
-                <div class="product-detail-modal">
-                  <p id="case_size-modal" class="size-modal">Case size: 41.0mm</p>
-                  <p id="price-modal" class="tax-modal">Y682,200 (tax inc.)</p>
-                </div>
-              </div>
+            <div id="wrapPhoto">
+              <img id="photo" style="z-index: 20;" />
             </div>
-            <div id="shadowModal" style="z-index: 1;"></div>
-            <div>
-              <canvas id="frameResult"></canvas>
-            </div>
-            <img id="photo" style="z-index: 20;" />
           </div>
-
-          <div class="btnBottom" id="download">
-            <button id="dialog-result-dl" type="button">
-              <img src="icon/download-solid.png" width="48" height="48">
-            </button>
-          </div>
-
         </div>
+
         <div id="content-detail">
-          <!-- <div id="fitting">
-            <h1>VIRTUAL FITTING APP</h1>
-          </div> -->
           <div id="list-content">
             <div class="link item">
               <img src="icon/genta.png" class="item-img" />
@@ -148,12 +112,17 @@
                 <img src="image/phone.png" class="phone" />
               </a></p>
             <p id="visit_reservation">
-              <a href="#">
+              <a id="visit_reservation_book">
                 <img src="image/home.png" class="home" />
               </a>
             </p>
 
           </div>
+        </div>
+        <div class="btnBottom" id="download">
+          <button id="dialog-result-dl" type="button">
+            <img src="icon/download-solid.png" width="45" height="45">
+          </button>
         </div>
       </div>
 

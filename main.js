@@ -2,18 +2,13 @@
 // グローバル変数
 //-----------------------------------------------------
 const VIDEO = document.querySelector("#camera"); // <video>
-const idVideo = document.getElementById("dialog-result");
 const FRAME = document.querySelector("#frame"); // <canvas>
-const FRAMERESULT = document.querySelector("#frameResult"); // <canvas>
-const RESULTIMG = document.querySelector("#resultImg");
-const STILL = document.querySelector("#still"); // <canvas>
-const SE = document.querySelector("#se");
+const canvasReplicate = document.getElementById("canvasReplicate");
+const canvasctx = canvasReplicate.getContext("2d");
 const photo = document.getElementById("photo");
 let scaleTotal = 1;
-let getWeight = {};
-let startFrame = {};
-
 let base64 = null;
+let resImage = '';
 
 /** フレーム素材一覧 */
 const FRAMES = [
@@ -29,7 +24,7 @@ const CONSTRAINTS = {
   video: {
     width: 1920,
     height: 1080,
-    // facingMode: "user" // フロントカメラを利用する
+    // facingMode: "user", // フロントカメラを利用する
     facingMode: { exact: "environment" }, // リアカメラを利用する場合
   },
 };
@@ -42,14 +37,14 @@ window.onload = () => {
   //カメラを<video>と同期
   //-----------------------------
   syncCamera();
-  VIDEO.play();
 
-  startFrame = FRAME.getBoundingClientRect();
+  VIDEO.addEventListener("loadeddata", initCanvas);
+
+  VIDEO.play();
   //-----------------------------
   // フレーム初期化
   //-----------------------------
   drawFrame(FRAMES[0].large); // 初期フレームを表示
-  setFrameList(); // 切り替え用のフレーム一覧を表示
 
   //-----------------------------
   // シャッターボタン
@@ -57,12 +52,10 @@ window.onload = () => {
   document.querySelector("#btn-shutter").addEventListener("click", () => {
     // SE再生＆映像停止
     VIDEO.pause();
-    SE.play();
-
     // 画像の生成
     onShutter(); // カメラ映像から静止画を取得
 
-    changeWidth("#dialog-result", "auto");
+    changeWidth("#dialog-result", "85%");
     hiddenTag("#content-detail");
     dialogShowImgResult("#wrapImg", "#download");
     // 最終結果ダイアログを表示
@@ -88,7 +81,7 @@ window.onload = () => {
   document
     .querySelector("#dialog-result-close")
     .addEventListener("click", (e) => {
-      // showParams("#shutter-inner", "#show-Detail", "#show-Detail");
+      showParams("#btn-shutter", "#show-Detail", "#show-Detail");
       hiddenTag("#container-shutter");
       VIDEO.play();
       dialogHide("#dialog-result");
@@ -97,7 +90,7 @@ window.onload = () => {
   // ダウンロードボタン
   document.querySelector("#dialog-result-dl").addEventListener("click", (e) => {
     // canvasDownload("#photo", base64);
-    html2canvas(document.querySelector("#resultImg")).then((canvas) => {
+    html2canvas(document.querySelector("#wrapPhoto")).then((canvas) => {
       var dataURL = canvas.toDataURL("image/png");
       var data = atob(dataURL.substring("data:image/png;base64,".length)),
         asArray = new Uint8Array(data.length);
@@ -135,6 +128,23 @@ window.onload = () => {
   });
 };
 
+function initCanvas() {
+  canvasReplicate.width = VIDEO.videoWidth;
+  canvasReplicate.height = VIDEO.videoHeight;
+  drawVideo();
+}
+
+function drawVideo() {
+  canvasctx.drawImage(
+    VIDEO,
+    0,
+    0,
+    canvasReplicate.width,
+    canvasReplicate.height
+  );
+  requestAnimationFrame(drawVideo);
+}
+
 /**
  * [onload] カメラを<video>と同期
  */
@@ -155,30 +165,6 @@ async function syncCamera() {
   }
 }
 
-/**
- * [onload] フレーム一覧を表示する
- *
- * @return {void}
- **/
-function setFrameList() {
-  const list = document.querySelector("#framelist");
-  let i = 0;
-  FRAMES.forEach((item) => {
-    const li = document.createElement("li");
-    li.innerHTML = `<img src="${item.small}">`; // <li><img ...></li>
-    li.classList.add("framelist"); // <li class="framelist" ...
-    li.setAttribute("data-index", i++); // <li data-index="1" ...
-
-    // クリックされるとフレーム変更
-    li.addEventListener("click", (e) => {
-      const idx = e.target.parentElement.getAttribute("data-index"); // 親(parent)がli
-      drawFrame(FRAMES[idx].large);
-    });
-
-    // ulに追加
-    list.appendChild(li);
-  });
-}
 
 /**
  * 指定フレームを描画する
@@ -194,32 +180,7 @@ function drawFrame(path) {
     const ctx = FRAME.getContext("2d");
     ctx.clearRect(0, 0, frame.width, frame.height);
     ctx.drawImage(image, 0, 0, frame.width, frame.height);
-
-    // setTimeout(() => {
-    //   dialogHide(modal);
-    // }, 100);
   };
-  // dialogShow(modal);
-}
-
-async function drawFrameCopy(path, obj) {
-  // const modal = "#dialog-nowloading";
-  const image = new Image();
-  image.src = path;
-  console.log(obj, "obj", startFrame.width);
-  frameResult.width = obj.width - (scaleTotal + 0.1) * 100;
-  frameResult.height = obj.height - (scaleTotal + 0.1) * 100;
-
-  image.onload = () => {
-    const ctx = FRAMERESULT.getContext("2d");
-    ctx.clearRect(0, 0, frameResult.width, frameResult.height);
-    ctx.drawImage(image, 0, 0, frameResult.width, frameResult.height);
-
-    // setTimeout(() => {
-    //   dialogHide(modal);
-    // }, 100);
-  };
-  // dialogShow(modal);
 }
 
 /**
@@ -227,77 +188,22 @@ async function drawFrameCopy(path, obj) {
  *
  * @return {void}
  **/
-async function onShutter() {
-  getWeight = {
-    height: FRAME.getBoundingClientRect().height,
-    width: FRAME.getBoundingClientRect().width,
-  };
-
-  scaleTotal = +parseFloat(getWeight.width / startFrame.width).toFixed(1);
-  console.log(scaleTotal, "scaleTotal");
-  switch (scaleTotal) {
-    case 1.1:
-      frameResult.style.top = "49%";
-      frameResult.style.left = "31%";
-      break;
-
-    case 1.2:
-      frameResult.style.top = "48%";
-      frameResult.style.left = "30%";
-      break;
-
-    case 1.3:
-      frameResult.style.top = "47%";
-      frameResult.style.left = "29%";
-      break;
-
-    case 1.4:
-      frameResult.style.top = "44%";
-      frameResult.style.left = "26%";
-      break;
-
-    case 1.5:
-      frameResult.style.top = "42%";
-      frameResult.style.left = "25%";
-      break;
-
-    case 1.6:
-      frameResult.style.top = "43%"; // 40
-      frameResult.style.left = "25%";
-      break;
-
-    case 1.7:
-      frameResult.style.top = "43%";
-      frameResult.style.left = "25%";
-      break;
-  }
-
-  await drawFrameCopy(FRAMES[0].large, getWeight);
-
-  const ctx = STILL.getContext("2d");
-
-  ctx.clearRect(0, 0, STILL.width, STILL.height);
-
-  // videoを画像として切り取り、canvasに描画
-  ctx.drawImage(VIDEO, 0, 0, STILL.width, STILL.height);
-
-  base64 = STILL.toDataURL("image/png");
-  photo.setAttribute("src", base64);
-
-  const img = new Image();
-
-  img.src = base64;
-
-  img.onload = function () {
-    const imgWidth = img.naturalWidth;
-    const imgHeight = img.naturalHeight;
-  };
-  // hideParams("#shutter-inner", "#hand", "#notiWatch", "#show-Detail", "#img-noti");
-
-  // await html2canvas(document.querySelector("#contents")).then((img) => {
-  //   var dataURL = img.toDataURL("image/png");
-  //   photo.setAttribute("src", dataURL);
-  // })
+function onShutter() {
+  hideParams("#img-noti", "#show-Detail", "#watch-tooltip", "#container-shutter", "#btn-shutter", "#hand");
+  html2canvas(document.querySelector("#contents"), {
+    imageTimeout: 15000,
+    scale: 1,
+    allowTaint: true,
+    useCORS: true,
+    logging: true,
+  }).then((canvas) => {
+    resImage = canvas.toDataURL("image/jpeg")
+    photo.crossOrigin = 'anonymous';
+    // photo.setAttribute("src", url);
+    photo.style.backgroundImage = `url(${resImage})`;
+    photo.style.backgroundImage = 'no-repeat';
+    event.preventDefault();
+  });
 }
 
 /**
@@ -307,7 +213,7 @@ async function onShutter() {
  **/
 function dialogShow(id) {
   document.querySelector("#dialog-outer").style.display = "block";
-  document.querySelector(id).style.display = "block";
+  document.querySelector(id).style.display = "flex";
 }
 
 /**
@@ -333,7 +239,7 @@ function hiddenTag(id) {
   document.querySelector(id).style.display = "none";
 }
 function showTag(id1, id2) {
-  document.querySelector(id1).style.display = "inline-grid";
+  document.querySelector(id1).style.display = "flex";
   document.querySelector(id2).style.border = "none";
   document.querySelector(id2).style.padding = "0";
 }
@@ -343,17 +249,17 @@ function changeWidth(id, value) {
   document.querySelector(id).style.padding = "35px";
 }
 
-function hideParams(id1, id2, id3, id4, id5) {
+function hideParams(id1, id2, id3, id4, id5, id6) {
   document.querySelector(id1).style.visibility = "hidden";
   document.querySelector(id2).style.visibility = "hidden";
   document.querySelector(id3).style.visibility = "hidden";
   document.querySelector(id4).style.visibility = "hidden";
   document.querySelector(id5).style.visibility = "hidden";
+  document.querySelector(id6).style.visibility = "hidden";
 }
 
 function showParams(id1, id2, id3, id4) {
   document.querySelector(id1).style.visibility = "visible";
   document.querySelector(id2).style.visibility = "visible";
   document.querySelector(id3).style.visibility = "visible";
-
 }
